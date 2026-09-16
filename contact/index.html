@@ -41,27 +41,24 @@
 </header>
 
 <main>
-  <section class="services-head">
+  <section class="contact-hero">
     <div class="wrap">
       <span class="eyebrow">Contact us</span>
       <h1>Reach Out for Personalized<br><span class="pink">Mental Health</span> Support &amp; Guidance</h1>
-      <div class="zigzag" aria-hidden="true"></div>
+      <p class="contact-lead">Send us a message below and a member of our team replies within one business day. Ready to book? Use the appointment request instead.</p>
+      <div class="contact-actions">
+        <a class="btn" href="#message">Send a message</a>
+        <a class="btn btn-outline" href="../request-appointment/">Request an appointment</a>
+        <a class="contact-call" href="tel:7023501419">or call <b>702-350-1419</b></a>
+      </div>
     </div>
   </section>
 
-  <section class="section-tight">
-    <div class="wrap">
-      <div class="contact-grid">
-        <div class="contact-list">
-          <div><h4>Address</h4><p>2450 Chandler Ave Ste 1, Las Vegas, NV 89120 United States</p></div>
-          <div><h4>Phone</h4><p><a href="tel:7023501419">702-350-1419</a></p></div>
-          <div><h4>Fax</h4><p>702-357-5249</p></div>
-          <div><h4>Email</h4><p><a href="mailto:michelle@bloommentalhealthlv.com">michelle@bloommentalhealthlv.com</a></p></div>
-        </div>
-        <iframe class="map" title="Map to Bloom Mental Health, 2450 Chandler Ave Ste 1, Las Vegas" src="https://www.google.com/maps?q=2450+Chandler+Ave+Ste+1,+Las+Vegas,+NV+89120&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-      </div>
-
-      <form class="form-card" id="contact-form" novalidate>
+  <section class="contact-main" id="message">
+    <div class="wrap contact-layout">
+      <form class="form-card form-primary" id="contact-form" novalidate>
+        <h2 class="form-title">Send us a message</h2>
+        <p class="form-sub">Tell us what you need. No medical details are necessary here; we will ask when we call.</p>
         <label for="c-name">Your name</label>
         <input id="c-name" name="name" type="text" autocomplete="name" required>
         <label for="c-email">Your email</label>
@@ -70,9 +67,19 @@
         <input id="c-subject" name="subject" type="text">
         <label for="c-message">Your message (optional)</label>
         <textarea id="c-message" name="message"></textarea>
-        <button class="btn btn-pill" type="submit">Submit</button>
+        <button class="btn btn-send" type="submit">Send message</button>
         <p class="form-msg" role="status" aria-live="polite"></p>
+        <p class="form-note">If you are in crisis or thinking about harming yourself, call or text <b>988</b> or call 911. This form is not monitored around the clock.</p>
       </form>
+      <aside class="contact-side">
+        <div class="contact-list">
+          <div><h4>Address</h4><p>2450 Chandler Ave Ste 1<br>Las Vegas, NV 89120</p></div>
+          <div><h4>Phone</h4><p><a href="tel:7023501419">702-350-1419</a></p></div>
+          <div><h4>Fax</h4><p>702-357-5249</p></div>
+          <div><h4>Email</h4><p><a href="mailto:michelle@bloommentalhealthlv.com">michelle@bloommentalhealthlv.com</a></p></div>
+        </div>
+        <iframe class="map map-side" title="Map to Bloom Mental Health, 2450 Chandler Ave Ste 1, Las Vegas" src="https://www.google.com/maps?q=2450+Chandler+Ave+Ste+1,+Las+Vegas,+NV+89120&amp;output=embed" loading="eager" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </aside>
     </div>
   </section>
 </main>
