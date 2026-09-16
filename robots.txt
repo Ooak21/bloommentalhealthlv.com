@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /request-appointment/thank-you/
+
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://bloommentalhealthlv.com/sitemap.xml
