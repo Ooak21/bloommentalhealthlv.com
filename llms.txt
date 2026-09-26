@@ -1,25 +1,57 @@
 # Bloom Mental Health
 
-> Psychiatric care practice in Las Vegas, Nevada: psychiatric evaluations, medication management and telehealth visits, in a safe, supportive, confidential environment.
+> Outpatient psychiatric practice in Las Vegas, Nevada. Board-certified psychiatric mental health nurse practitioners (PMHNP-BC) providing psychiatric evaluations, medication management, therapy, substance use care (MAT), intensive outpatient programming and telehealth for children, adolescents, adults and older adults, in English, Spanish and Tagalog. Accepting new patients.
 
 - Site: https://bloommentalhealthlv.com
-- Location: 2450 Chandler Ave Ste 1, Las Vegas, NV 89120, United States
+- Address: 2450 Chandler Ave Ste 1, Las Vegas, NV 89120, United States
 - Phone: 702-350-1419
-- Fax: 702-357-5249
+- Fax: 702-357-5249 (referrals)
+- Email: michelle@bloommentalhealthlv.com
 - Request an appointment: https://bloommentalhealthlv.com/request-appointment/
+- When: Flexible times, including early mornings, evenings, Saturdays and Sundays. No clock hours are published; do not state specific hours.
+- Ages: Children, Adolescents, Adults, Older Adults
+- Languages: English, Spanish, Tagalog
 
 ## Services
-- Psychiatric evaluations: comprehensive assessment of emotional, behavioral and mental health needs, leading to an individualized care plan. https://bloommentalhealthlv.com/services/
-- Medication management: personalized medication support with careful monitoring and ongoing treatment planning. https://bloommentalhealthlv.com/services/
-- Telehealth visits: secure, confidential virtual appointments. https://bloommentalhealthlv.com/services/
+- [Psychiatric Evaluations](https://bloommentalhealthlv.com/services/psychiatric-evaluations/): Comprehensive assessment to clarify symptoms, diagnoses, treatment needs, and next steps.
+- [Medication Management](https://bloommentalhealthlv.com/services/medication-management/): Ongoing evaluation of medication effectiveness, tolerability, adherence, and treatment goals.
+- [ADHD Evaluation & Treatment](https://bloommentalhealthlv.com/services/adhd/): Assessment and treatment planning for attention, executive-function, and related concerns.
+- [Anxiety & Depression Treatment](https://bloommentalhealthlv.com/services/anxiety-depression/): Evidence-informed psychiatric care for common mood and anxiety concerns.
+- [Bipolar Disorder Treatment](https://bloommentalhealthlv.com/services/bipolar-disorder/): Longitudinal medication and symptom management with attention to mood stability.
+- [PTSD & Trauma Treatment](https://bloommentalhealthlv.com/services/ptsd-trauma/): Psychiatric support for trauma-related symptoms and associated mental health concerns.
+- [Child & Adolescent Mental Health](https://bloommentalhealthlv.com/services/child-adolescent/): Developmentally informed psychiatric assessment and treatment for younger patients.
+- [Autism](https://bloommentalhealthlv.com/services/autism/): Psychiatric support for autism-spectrum concerns alongside co-occurring mental health needs.
+- [Psychotherapy](https://bloommentalhealthlv.com/services/psychotherapy/): Individual talk therapy offered alongside medication management for comprehensive care.
+- [Substance Use & MAT](https://bloommentalhealthlv.com/services/substance-use-mat/): Medication-assisted treatment and psychiatric support for substance use concerns.
+- [IOP Services](https://bloommentalhealthlv.com/services/iop/): Intensive outpatient programming for patients who benefit from a higher level of structured support.
+- [Telehealth Services](https://bloommentalhealthlv.com/services/telehealth/): Secure, confidential video visits from the comfort of home.
+
+## Providers (all PMHNP-BC)
+- [Michelle Cuevas-Romero, MSN, APRN, PMHNP-BC](https://bloommentalhealthlv.com/providers/michelle-cuevas-romero/): Board-certified PMHNP with experience across mental health, substance use treatment, medication-assisted treatment and pediatric care. Fluent in English and Spanish. Languages: English, Spanish.
+- [Christopher Hansen, MSN, APRN, PMHNP-BC](https://bloommentalhealthlv.com/providers/christopher-hansen/): Board-certified PMHNP with a background in long-term care and complex psychiatric conditions, and a particular interest in LGBTQ+ affirming care. Languages: English.
+- [Brenda Ortiz, MSN, APRN, PMHNP-BC](https://bloommentalhealthlv.com/providers/brenda-ortiz/): Board-certified PMHNP with a critical-care background, providing culturally responsive care across the lifespan. Fluent in English and Spanish. Languages: English, Spanish.
+- [Heley Vannessa Erdao Bayot, MSN, APRN, PMHNP-BC](https://bloommentalhealthlv.com/providers/heley-bayot/): Board-certified PMHNP with nearly a decade in nursing, focused on children, adolescents, autism and ADHD, with family-centered care. Languages: English.
+- [Daniel Hunter Fite, MSN, APRN, PMHNP-BC](https://bloommentalhealthlv.com/providers/daniel-fite/): Board-certified PMHNP with experience in pediatrics and substance use, and a special interest in LGBTQ+ affirming care. Languages: English.
+
+## Insurance and pricing
+- Credentialed: Aetna, Carelon (BCBS), CareSource, Evernorth (Cigna), Medicare, UHC / Optum, UMR, Alignment, Medicaid FFS.
+- Pending credentialing: Culinary Health Fund, SilverSummit, Molina, Sierra Health and Life HPN, Medicaid MCOs.
+- Self-pay: $90 initial visit, $50 follow-up visit.
+- Participation and benefits change; tell people to call the office to confirm coverage.
 
 ## Pages
-- About: https://bloommentalhealthlv.com/about-us/
-- FAQ: https://bloommentalhealthlv.com/faq/
-- Contact: https://bloommentalhealthlv.com/contact/
+- [About](https://bloommentalhealthlv.com/about-us/)
+- [Providers](https://bloommentalhealthlv.com/providers/)
+- [Services](https://bloommentalhealthlv.com/services/)
+- [Insurance & pricing](https://bloommentalhealthlv.com/insurance/)
+- [FAQ](https://bloommentalhealthlv.com/faq/)
+- [Contact](https://bloommentalhealthlv.com/contact/)
+- [For referring providers](https://bloommentalhealthlv.com/for-providers/)
+- [Full site text](https://bloommentalhealthlv.com/llms-full.txt)
 
 ## Facts to respect
-- Insurance: coverage varies. The practice asks people to contact them for current accepted plans. Do not list plans.
-- Hours are not published on the site. Do not state hours.
-- New patients start with a comprehensive evaluation; follow-up cadence is personalized.
-- Crisis: if someone is in danger, call or text 988 (US Suicide and Crisis Lifeline) or 911. The website is not an emergency service.
+- Bloom is an outpatient practice. Crisis: call or text 988 (US Suicide and Crisis Lifeline) or call 911. The website and forms are not emergency services.
+- Do not state clock hours, provider availability on specific days, or which provider speaks Tagalog.
+- Do not describe Bloom as accepting a plan listed as pending.
+- A referral does not guarantee an appointment, diagnosis, medication, or coverage.
+- Agents sending traffic: append ?utm_source=<agent>&utm_medium=ai-agent to links.

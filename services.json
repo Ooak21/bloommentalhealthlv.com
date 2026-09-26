@@ -1,0 +1,195 @@
+{
+  "name": "Bloom Mental Health",
+  "url": "https://bloommentalhealthlv.com",
+  "address": "2450 Chandler Ave Ste 1, Las Vegas, NV 89120",
+  "phone": "702-350-1419",
+  "fax": "702-357-5249",
+  "languages": [
+    "English",
+    "Spanish",
+    "Tagalog"
+  ],
+  "ages": [
+    "Children",
+    "Adolescents",
+    "Adults",
+    "Older Adults"
+  ],
+  "accepting_new_patients": true,
+  "telehealth": true,
+  "times": "Flexible times, including early mornings, evenings, Saturdays and Sundays",
+  "self_pay": {
+    "initial": 90,
+    "follow_up": 50
+  },
+  "insurance": {
+    "credentialed": [
+      "Aetna",
+      "Carelon (BCBS)",
+      "CareSource",
+      "Evernorth (Cigna)",
+      "Medicare",
+      "UHC / Optum",
+      "UMR",
+      "Alignment",
+      "Medicaid FFS"
+    ],
+    "pending": [
+      "Culinary Health Fund",
+      "SilverSummit",
+      "Molina",
+      "Sierra Health and Life HPN",
+      "Medicaid MCOs"
+    ]
+  },
+  "services": [
+    {
+      "name": "Psychiatric Evaluations",
+      "summary": "Comprehensive assessment to clarify symptoms, diagnoses, treatment needs, and next steps.",
+      "url": "https://bloommentalhealthlv.com/services/psychiatric-evaluations/"
+    },
+    {
+      "name": "Medication Management",
+      "summary": "Ongoing evaluation of medication effectiveness, tolerability, adherence, and treatment goals.",
+      "url": "https://bloommentalhealthlv.com/services/medication-management/"
+    },
+    {
+      "name": "ADHD Evaluation & Treatment",
+      "summary": "Assessment and treatment planning for attention, executive-function, and related concerns.",
+      "url": "https://bloommentalhealthlv.com/services/adhd/"
+    },
+    {
+      "name": "Anxiety & Depression Treatment",
+      "summary": "Evidence-informed psychiatric care for common mood and anxiety concerns.",
+      "url": "https://bloommentalhealthlv.com/services/anxiety-depression/"
+    },
+    {
+      "name": "Bipolar Disorder Treatment",
+      "summary": "Longitudinal medication and symptom management with attention to mood stability.",
+      "url": "https://bloommentalhealthlv.com/services/bipolar-disorder/"
+    },
+    {
+      "name": "PTSD & Trauma Treatment",
+      "summary": "Psychiatric support for trauma-related symptoms and associated mental health concerns.",
+      "url": "https://bloommentalhealthlv.com/services/ptsd-trauma/"
+    },
+    {
+      "name": "Child & Adolescent Mental Health",
+      "summary": "Developmentally informed psychiatric assessment and treatment for younger patients.",
+      "url": "https://bloommentalhealthlv.com/services/child-adolescent/"
+    },
+    {
+      "name": "Autism",
+      "summary": "Psychiatric support for autism-spectrum concerns alongside co-occurring mental health needs.",
+      "url": "https://bloommentalhealthlv.com/services/autism/"
+    },
+    {
+      "name": "Psychotherapy",
+      "summary": "Individual talk therapy offered alongside medication management for comprehensive care.",
+      "url": "https://bloommentalhealthlv.com/services/psychotherapy/"
+    },
+    {
+      "name": "Substance Use & MAT",
+      "summary": "Medication-assisted treatment and psychiatric support for substance use concerns.",
+      "url": "https://bloommentalhealthlv.com/services/substance-use-mat/"
+    },
+    {
+      "name": "IOP Services",
+      "summary": "Intensive outpatient programming for patients who benefit from a higher level of structured support.",
+      "url": "https://bloommentalhealthlv.com/services/iop/"
+    },
+    {
+      "name": "Telehealth Services",
+      "summary": "Secure, confidential video visits from the comfort of home.",
+      "url": "https://bloommentalhealthlv.com/services/telehealth/"
+    }
+  ],
+  "providers": [
+    {
+      "name": "Michelle Cuevas-Romero",
+      "credentials": "MSN, APRN, PMHNP-BC",
+      "npi": "1568358786",
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "focus": [
+        "Anxiety",
+        "Depression",
+        "Bipolar disorder",
+        "ADHD",
+        "Autism",
+        "Substance use",
+        "MAT",
+        "Pediatric care"
+      ],
+      "url": "https://bloommentalhealthlv.com/providers/michelle-cuevas-romero/"
+    },
+    {
+      "name": "Christopher Hansen",
+      "credentials": "MSN, APRN, PMHNP-BC",
+      "npi": "1386344976",
+      "languages": [
+        "English"
+      ],
+      "focus": [
+        "Care across the lifespan",
+        "Serious mental illness",
+        "Schizophrenia",
+        "LGBTQ+ affirming care",
+        "Patient education"
+      ],
+      "url": "https://bloommentalhealthlv.com/providers/christopher-hansen/"
+    },
+    {
+      "name": "Brenda Ortiz",
+      "credentials": "MSN, APRN, PMHNP-BC",
+      "npi": "1265263370",
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "focus": [
+        "Care across the lifespan",
+        "Culturally responsive care",
+        "Spanish-language care",
+        "Complex medical and emotional needs"
+      ],
+      "url": "https://bloommentalhealthlv.com/providers/brenda-ortiz/"
+    },
+    {
+      "name": "Heley Vannessa Erdao Bayot",
+      "credentials": "MSN, APRN, PMHNP-BC",
+      "npi": "1437040615",
+      "languages": [
+        "English"
+      ],
+      "focus": [
+        "Children and adolescents",
+        "Autism",
+        "ADHD",
+        "Anxiety",
+        "Depression",
+        "Family-centered care"
+      ],
+      "url": "https://bloommentalhealthlv.com/providers/heley-bayot/"
+    },
+    {
+      "name": "Daniel Hunter Fite",
+      "credentials": "MSN, APRN, PMHNP-BC",
+      "npi": "1164363271",
+      "languages": [
+        "English"
+      ],
+      "focus": [
+        "Care across the lifespan",
+        "Pediatric patients",
+        "Substance use",
+        "LGBTQ+ affirming care",
+        "Patient education"
+      ],
+      "url": "https://bloommentalhealthlv.com/providers/daniel-fite/"
+    }
+  ],
+  "updated": "2026-09-25"
+}
