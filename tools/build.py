@@ -702,7 +702,7 @@ SMS_CTA = ("Optional: By providing your phone number and checking this box, you 
            "Reply STOP to opt out. Reply HELP for help. Consent is not a condition of purchase. We will not share mobile information with third parties for "
            "promotional or marketing purposes. See our Text Message Program, SMS Terms, and Privacy Policy.")
 
-def legal_page(path, eyebrow, h1, lede, sections, title, desc, crumb):
+def legal_page(path, eyebrow, h1, lede, sections, title, desc, crumb, extra=""):
     secs = "\n".join(f'        <h3>{E(h)}</h3>\n' + "\n".join(f"        <p>{x}</p>" if not x.startswith("<ul") else f"        {x}" for x in paras) for h, paras in sections)
     body = f'''{hero_scene("cloud-light", eyebrow, h1, lede, "", [("Home", "/"), (crumb, path)])}
 
@@ -721,8 +721,31 @@ def legal_page(path, eyebrow, h1, lede, sections, title, desc, crumb):
         <p class="note">Last updated September 25, 2026.</p>
       </div>
     </div>
-  </section>'''
+  </section>{extra}'''
     page(path, title, desc, body, [org(), webpage("WebPage", path, title, desc), crumbs_ld([("Home", "/"), (crumb, path)])])
+
+SMS_FORM = f'''
+
+  <section class="band band-tight" aria-labelledby="smsform-title">
+    <form class="form glass rise" id="sms-form" novalidate style="max-width:860px">
+      <h2 id="smsform-title" style="font-size:clamp(30px,3vw,44px)">Request an appointment, <em>with or without texts</em></h2>
+      <p class="form-intro">A person from our team calls, emails or texts you back to set a time. Texts are only sent if you check the box.</p>
+      <div class="field-row">
+        <div class="field"><label for="s-first">First name</label><input id="s-first" name="first_name" type="text" autocomplete="given-name" required></div>
+        <div class="field"><label for="s-last">Last name</label><input id="s-last" name="last_name" type="text" autocomplete="family-name" required></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label for="s-email">Email</label><input id="s-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="s-phone">Mobile phone <span class="opt">(optional)</span></label><input id="s-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"></div>
+      </div>
+      <label class="consent" for="s-sms"><input type="checkbox" id="s-sms" name="sms_consent"><span id="s-sms-text">{SMS_CTA.replace("See our Text Message Program, SMS Terms, and Privacy Policy.", "See our <a href=\"/sms/\">Text Message Program</a>, <a href=\"/terms/\">SMS Terms</a>, and <a href=\"/privacy/\">Privacy Policy</a>.")}</span></label>
+      <div class="form-foot">
+        <button class="pill pill-solid" type="submit">Send my request</button>
+        <p class="form-msg" role="status"></p>
+      </div>
+      <p class="crisis">If you are in crisis or thinking about harming yourself, call or text <strong>988</strong> or call <strong>911</strong>. This form is not monitored around the clock.</p>
+    </form>
+  </section>'''
 
 def ul(items): return "<ul>" + "".join(f"<li>{x}</li>" for x in items) + "</ul>"
 LINKS = '<a href="/sms/">Text Message Program</a>, <a href="/terms/">SMS Terms</a>, and <a href="/privacy/">Privacy Policy</a>'
@@ -738,7 +761,7 @@ def sms_program():
          ("Frequency and cost", ["Message frequency may vary, usually a few texts around each request or appointment. Standard Message and Data Rates may apply."]),
          ("Stop or get help", [f"Reply <b>STOP</b> to any text to opt out. You will get one confirmation and no further messages. Reply <b>HELP</b> for help, call {tel}, or email {P['email']}. To join again later, reply START or check the box on the form again."]),
          ("Privacy", [f"We will not share mobile information with third parties for promotional or marketing purposes. Text messaging originator opt-in data and consent will not be shared with any third parties. Details are in our {LINKS}."])],
-        "Text Message Program | Bloom Mental Health", "Bloom Mental Health's optional customer-care text messages: appointment confirmations and reminders. Reply STOP to opt out, HELP for help.", "Text Message Program")
+        "Text Message Program | Bloom Mental Health", "Bloom Mental Health's optional customer-care text messages: appointment confirmations and reminders. Reply STOP to opt out, HELP for help.", "Text Message Program", extra=SMS_FORM)
 
 def terms():
     legal_page("/terms/", "Terms", "Terms of use &amp; <em>SMS terms</em>", "",

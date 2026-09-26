@@ -75,6 +75,38 @@
     });
   }
 
+  // Text Message Program page (/sms/): the same appointment request as the card, with the same optional SMS box.
+  var sf = document.getElementById('sms-form');
+  if (sf) {
+    var smsg = sf.querySelector('.form-msg');
+    sf.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var first = (sf.elements['first_name'].value || '').trim(), last = (sf.elements['last_name'].value || '').trim();
+      var email = (sf.elements['email'].value || '').trim(), phone = (sf.elements['phone'].value || '').replace(/\D/g, '').replace(/^1(?=\d{10}$)/, '');
+      smsg.className = 'form-msg';
+      if (!first || !last) { smsg.textContent = 'Please add your first and last name.'; smsg.className = 'form-msg err'; return; }
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { smsg.textContent = 'Please add a valid email address.'; smsg.className = 'form-msg err'; return; }
+      if (phone && phone.length !== 10) { smsg.textContent = 'Please enter a 10-digit mobile number, or leave it blank.'; smsg.className = 'form-msg err'; return; }
+      var sms = sf.elements['sms_consent'].checked && phone.length === 10;
+      var btn = sf.querySelector('button[type=submit]'); btn.disabled = true; smsg.textContent = 'Sending…';
+      fetch('https://usable-horse-871.convex.site/lead', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ first_name: first, last_name: last, email: email, phone: phone, source: 'website_inquiry',
+          source_detail: 'Requested on the Text Message Program page', visit_type: 'Not sure yet', request_appointment: true,
+          tags: ['website', 'psychiatry'], attribution: window.bloomAttribution(),
+          sms_consent: sms, sms_consent_text: sms ? document.getElementById('s-sms-text').textContent.replace(/\s+/g, ' ').trim() : undefined,
+          sms_consent_version: sms ? 'bloom-sms-2026-09-25' : undefined, sms_consent_page: sms ? location.href.slice(0, 300) : undefined })
+      }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return r.ok && j.ok !== false; }); })
+        .then(function (okd) {
+          if (!okd) throw new Error('send failed');
+          sf.reset(); smsg.textContent = 'Thank you, ' + first + '. Your request is in. A member of our team will reach out within one business day.';
+          track('generate_lead', { source: 'sms_page' });
+        })
+        .catch(function () { smsg.textContent = 'Something went wrong. Please call 702-350-1419 or try again in a moment.'; smsg.className = 'form-msg err'; })
+        .then(function () { btn.disabled = false; });
+    });
+  }
+
   // Request-an-appointment page: the intake card lives on app.bloommentalhealthlv.com and reports its height + a sent signal.
   var frame = document.getElementById('bloom-inquiry');
   if (frame) {

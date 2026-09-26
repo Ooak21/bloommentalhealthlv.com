@@ -100,6 +100,27 @@
       </div>
     </div>
   </section>
+
+  <section class="band band-tight" aria-labelledby="smsform-title">
+    <form class="form glass rise" id="sms-form" novalidate style="max-width:860px">
+      <h2 id="smsform-title" style="font-size:clamp(30px,3vw,44px)">Request an appointment, <em>with or without texts</em></h2>
+      <p class="form-intro">A person from our team calls, emails or texts you back to set a time. Texts are only sent if you check the box.</p>
+      <div class="field-row">
+        <div class="field"><label for="s-first">First name</label><input id="s-first" name="first_name" type="text" autocomplete="given-name" required></div>
+        <div class="field"><label for="s-last">Last name</label><input id="s-last" name="last_name" type="text" autocomplete="family-name" required></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label for="s-email">Email</label><input id="s-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="s-phone">Mobile phone <span class="opt">(optional)</span></label><input id="s-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"></div>
+      </div>
+      <label class="consent" for="s-sms"><input type="checkbox" id="s-sms" name="sms_consent"><span id="s-sms-text">Optional: By providing your phone number and checking this box, you agree to receive customer-care text messages from Bloom Mental Health about your request and your appointments, such as confirmations and reminders. Message frequency may vary. Standard Message and Data Rates may apply. Reply STOP to opt out. Reply HELP for help. Consent is not a condition of purchase. We will not share mobile information with third parties for promotional or marketing purposes. See our <a href="/sms/">Text Message Program</a>, <a href="/terms/">SMS Terms</a>, and <a href="/privacy/">Privacy Policy</a>.</span></label>
+      <div class="form-foot">
+        <button class="pill pill-solid" type="submit">Send my request</button>
+        <p class="form-msg" role="status"></p>
+      </div>
+      <p class="crisis">If you are in crisis or thinking about harming yourself, call or text <strong>988</strong> or call <strong>911</strong>. This form is not monitored around the clock.</p>
+    </form>
+  </section>
 </main>
 
 <footer>
