@@ -192,6 +192,7 @@ def page(path, title, desc, body, ld, og_image="/assets/share.jpg", noindex=Fals
 
 <script src="/assets/sw.js" defer></script>
 <script src="/assets/site.js" defer></script>
+<script src="/assets/chat.js" defer></script>
 </body>
 </html>
 '''
@@ -682,7 +683,8 @@ def request():
         <span>{E(ADDR_ONE)}</span>
         <a href="tel:{tel}">{P["phone"]}</a>
       </div>
-      <iframe id="bloom-inquiry" class="request-frame" title="Request an appointment with Bloom Mental Health" src="https://app.bloommentalhealthlv.com/inquiry.html" loading="eager" allow="clipboard-write"></iframe>
+      <iframe id="bloom-inquiry" class="request-frame" title="Request an appointment with Bloom Mental Health" data-src="https://app.bloommentalhealthlv.com/inquiry.html" loading="eager" allow="clipboard-write"></iframe>
+      <noscript><p class="note"><a href="https://app.bloommentalhealthlv.com/inquiry.html">Open the appointment request form</a></p></noscript>
       <p class="crisis" style="margin-top:26px">You can also call <a href="tel:{tel}">{P["phone"]}</a>. If you are in crisis or thinking about harming yourself, call or text <strong>988</strong> (Suicide and Crisis Lifeline) or call <strong>911</strong>. This form is not monitored around the clock.</p>
     </div>
   </section>'''

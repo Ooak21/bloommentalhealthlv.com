@@ -1,5 +1,40 @@
 /* Bloom Mental Health · site behaviour: phone menu, contact form -> Bloom CRM, request-appointment frame sizing, GA lead events. */
 (function () {
+  // ---- where visitors come from (2026-09-25) ----
+  // First touch is kept for good (localStorage), last touch per visit (sessionStorage). Ad/campaign tags,
+  // referrer and pages only. It rides along with the contact form, the request card and the chat.
+  var KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid', 'fbclid', 'msclkid'];
+  function store(kind) { try { return kind === 'first' ? window.localStorage : window.sessionStorage; } catch (_) { return null; } }
+  function read(kind) { var st = store(kind); try { return st ? JSON.parse(st.getItem('bloom-attr-' + kind) || 'null') : null; } catch (_) { return null; } }
+  function write(kind, v) { var st = store(kind); try { if (st) st.setItem('bloom-attr-' + kind, JSON.stringify(v)); } catch (_) {} }
+  (function capture() {
+    var q; try { q = new URLSearchParams(location.search); } catch (_) { return; }
+    var touch = {}, tagged = false;
+    KEYS.forEach(function (k) { var v = q.get(k); if (v) { touch[k] = v.slice(0, 200); tagged = true; } });
+    var ref = document.referrer || '';
+    var external = ref && ref.indexOf(location.origin) !== 0 && ref.indexOf('app.bloommentalhealthlv.com') < 0;
+    if (external) touch.referrer = ref.slice(0, 300);
+    touch.landing_page = location.pathname;
+    touch.at = new Date().toISOString();
+    // A new visit (no touch yet this session) or a new campaign/referrer replaces the last touch.
+    if (!read('last') || tagged || external) write('last', touch);
+    if (!read('first')) write('first', touch);
+  })();
+  window.bloomAttribution = function () {
+    var last = read('last') || {}, first = read('first') || {}, out = {};
+    KEYS.concat(['referrer', 'landing_page']).forEach(function (k) { if (last[k]) out[k] = last[k]; });
+    if (first.at && first.at !== last.at) {
+      if (first.utm_source) out.first_utm_source = first.utm_source;
+      if (first.utm_medium) out.first_utm_medium = first.utm_medium;
+      if (first.utm_campaign) out.first_utm_campaign = first.utm_campaign;
+      if (first.referrer) out.first_referrer = first.referrer;
+      if (first.landing_page) out.first_landing_page = first.landing_page;
+    }
+    if (first.at) out.first_seen = first.at;
+    out.page = location.pathname;
+    return out;
+  };
+
   var toggle = document.querySelector('.menu-toggle');
   var nav = document.getElementById('nav');
   if (toggle && nav) {
@@ -28,7 +63,7 @@
       var btn = form.querySelector('button[type=submit]'); btn.disabled = true; msg.textContent = 'Sending…';
       fetch('https://usable-horse-871.convex.site/lead', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ first_name: first, last_name: last, email: email, source: 'website_contact', source_detail: subject.slice(0, 200), message: body.slice(0, 4000), consent: false })
+        body: JSON.stringify({ first_name: first, last_name: last, email: email, source: 'website_contact', source_detail: subject.slice(0, 200), message: body.slice(0, 4000), attribution: window.bloomAttribution() })
       }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok && j.ok !== false, j: j }; }); })
         .then(function (res) {
           if (!res.ok) throw new Error((res.j && res.j.error) || 'send failed');
@@ -43,6 +78,12 @@
   // Request-an-appointment page: the intake card lives on app.bloommentalhealthlv.com and reports its height + a sent signal.
   var frame = document.getElementById('bloom-inquiry');
   if (frame) {
+    // The card lives on another origin and cannot read this page's URL, so hand it the visitor's tags.
+    if (frame.dataset.src && !frame.getAttribute('src')) {
+      var src = frame.dataset.src;
+      try { src += (src.indexOf('?') < 0 ? '?' : '&') + 'attr=' + encodeURIComponent(JSON.stringify(window.bloomAttribution())); } catch (_) {}
+      frame.setAttribute('src', src);
+    }
     window.addEventListener('message', function (e) {
       if (e.origin !== 'https://app.bloommentalhealthlv.com') return;
       var d = e.data || {};
