@@ -174,6 +174,7 @@ def page(path, title, desc, body, ld, og_image="/assets/share.jpg", noindex=Fals
         <li><a href="/for-providers/">For Referring Providers</a></li>
         <li><a href="/request-appointment/">Request an Appointment</a></li>
       </ul>
+      <p class="body" style="margin-top:18px;font-size:13px"><a href="/privacy/">Privacy</a> &nbsp;·&nbsp; <a href="/terms/">Terms</a> &nbsp;·&nbsp; <a href="/sms/">Text Messages</a></p>
     </div>
   </div>
   <div class="legal">
@@ -693,6 +694,76 @@ def notfound():
     body = f'''{hero_scene("lake-willow", "Page not found", "This page has <em>drifted away</em>", "The page you are looking for is not here. Try our services, or request an appointment.", REQ + '<a class="pill pill-line" href="/services/">Our Services</a>', None, short=False)}'''
     page("/404.html", "Page not found | Bloom Mental Health", "Page not found.", body, [], noindex=True)
 
+
+SMS_CTA = ("Optional: By providing your phone number and checking this box, you agree to receive customer-care text messages from Bloom Mental Health "
+           "about your request and your appointments, such as confirmations and reminders. Message frequency may vary. Standard Message and Data Rates may apply. "
+           "Reply STOP to opt out. Reply HELP for help. Consent is not a condition of purchase. We will not share mobile information with third parties for "
+           "promotional or marketing purposes. See our Text Message Program, SMS Terms, and Privacy Policy.")
+
+def legal_page(path, eyebrow, h1, lede, sections, title, desc, crumb):
+    secs = "\n".join(f'        <h3>{E(h)}</h3>\n' + "\n".join(f"        <p>{x}</p>" if not x.startswith("<ul") else f"        {x}" for x in paras) for h, paras in sections)
+    body = f'''{hero_scene("cloud-light", eyebrow, h1, lede, "", [("Home", "/"), (crumb, path)])}
+
+  <section class="band band-tight" aria-label="{E(crumb)}">
+    <div class="prose">
+      <aside class="prose-side rise">
+        <p class="label">Questions</p>
+        <div class="info">
+          <div><h3>Call</h3><p><a href="tel:{P["phone"].replace("-", "")}">{P["phone"]}</a></p></div>
+          <div><h3>Email</h3><p><a href="mailto:{P["email"]}">{P["email"]}</a></p></div>
+          <div><h3>Mail</h3><p style="font-size:clamp(18px,1.5vw,22px)">{P["name"]}<br>{P["street"]}<br>{P["city"]}, {P["region"]} {P["zip"]}</p></div>
+        </div>
+      </aside>
+      <div class="prose-main rise">
+{secs}
+        <p class="note">Last updated September 25, 2026.</p>
+      </div>
+    </div>
+  </section>'''
+    page(path, title, desc, body, [org(), webpage("WebPage", path, title, desc), crumbs_ld([("Home", "/"), (crumb, path)])])
+
+def ul(items): return "<ul>" + "".join(f"<li>{x}</li>" for x in items) + "</ul>"
+LINKS = '<a href="/sms/">Text Message Program</a>, <a href="/terms/">SMS Terms</a>, and <a href="/privacy/">Privacy Policy</a>'
+
+def sms_program():
+    tel = P["phone"]
+    legal_page("/sms/", "Text Message Program", "Bloom Mental Health <em>text messages</em>",
+        "Customer-care texts about your request and your appointments, only if you ask for them.",
+        [("What the program is", [f"Bloom Mental Health sends customer-care text messages to people who ask for them: confirmations of appointment requests, appointment reminders, links to join a telehealth visit, and replies to questions you text us. We never send marketing or promotional texts, and texts never include diagnoses, medications, or other clinical details."]),
+         ("How to join", [f"Joining is optional. On our <a href=\"/request-appointment/\">appointment request form</a>, enter your mobile number and check the box next to this statement:",
+                          f"<em>{E(SMS_CTA)}</em>",
+                          "The box is unchecked unless you check it, the form works without it, and the phone number is optional. We only text a number whose owner agreed on our form; we never text a number someone else gave us."]),
+         ("Frequency and cost", ["Message frequency may vary, usually a few texts around each request or appointment. Standard Message and Data Rates may apply."]),
+         ("Stop or get help", [f"Reply <b>STOP</b> to any text to opt out. You will get one confirmation and no further messages. Reply <b>HELP</b> for help, call {tel}, or email {P['email']}. To join again later, reply START or check the box on the form again."]),
+         ("Privacy", [f"We will not share mobile information with third parties for promotional or marketing purposes. Text messaging originator opt-in data and consent will not be shared with any third parties. Details are in our {LINKS}."])],
+        "Text Message Program | Bloom Mental Health", "Bloom Mental Health's optional customer-care text messages: appointment confirmations and reminders. Reply STOP to opt out, HELP for help.", "Text Message Program")
+
+def terms():
+    legal_page("/terms/", "Terms", "Terms of use &amp; <em>SMS terms</em>", "",
+        [("Using this website", ["This website shares general information about Bloom Mental Health, an outpatient psychiatric practice in Las Vegas, Nevada. It is not medical advice and does not create a patient relationship. Submitting a form is a request to be contacted, not an appointment."]),
+         ("Not for emergencies", ["This website, its forms, and our text messages are not monitored around the clock and are not emergency services. If you are in crisis or thinking about harming yourself, call or text 988 (Suicide and Crisis Lifeline) or call 911."]),
+         ("SMS terms", [
+             "<b>Program:</b> Bloom Mental Health customer-care text messages about your request and your appointments, such as confirmations, reminders, and telehealth visit links. No marketing messages.",
+             "<b>Opt-in:</b> only by checking the optional box on our appointment request form with your mobile number. Consent is not a condition of purchase or of receiving care.",
+             "<b>Message frequency may vary.</b> <b>Standard Message and Data Rates may apply.</b>",
+             f"<b>Opt out:</b> reply STOP at any time; you will receive one confirmation and no further messages. <b>Help:</b> reply HELP, call {P['phone']}, or email {P['email']}.",
+             "Carriers are not liable for delayed or undelivered messages.",
+             f"We will not share mobile information with third parties for promotional or marketing purposes. See our {LINKS}."]),
+         ("Contact", [f"{P['name']}, {ADDR_ONE}. Phone {P['phone']}. Email {P['email']}."])],
+        "Terms & SMS Terms | Bloom Mental Health", "Terms of use and SMS terms for Bloom Mental Health's website and customer-care text messages. Reply STOP to opt out, HELP for help.", "Terms")
+
+def privacy():
+    legal_page("/privacy/", "Privacy", "Privacy <em>policy</em>", "How this website handles the information you give us.",
+        [("What we collect on this website", [ul(["What you type into our forms: name, email, optional phone number, the kind of visit you are looking for, and any note you add.",
+                                                 "Whether you checked the optional text message box, the exact wording you agreed to, and when.",
+                                                 "Basic, non-identifying website analytics (pages visited, general location, device type) through Google Analytics."])]),
+         ("How we use it", ["To contact you about your request, schedule and remind you of appointments, answer your questions, and improve this website. Health information you share as a patient is protected under HIPAA and our Notice of Privacy Practices, which you receive when you become a patient."]),
+         ("We do not sell or share your information", ["We do not sell or share your personal information with third parties for their marketing or promotional purposes. We use service providers who help us run our practice (for example, our secure practice system, email, and text message delivery), and they may only use information to provide those services to us."]),
+         ("Text messages (SMS)", ["If you opt in to our text messages, we use your mobile number only to send the customer-care messages you asked for. <b>We will not share mobile information with third parties for promotional or marketing purposes. Text messaging originator opt-in data and consent will not be shared with any third parties.</b> Reply STOP to opt out at any time, or HELP for help. See our <a href=\"/sms/\">Text Message Program</a> and <a href=\"/terms/\">SMS Terms</a>."]),
+         ("Your choices", [f"You can ask us to update or delete the information you submitted through this website by calling {P['phone']} or emailing {P['email']}."]),
+         ("Changes", ["We may update this policy. The date below shows the latest version."])],
+        "Privacy Policy | Bloom Mental Health", "Bloom Mental Health's website privacy policy, including text message (SMS) privacy: we never sell or share your mobile information or opt-in data.", "Privacy Policy")
+
 # ------------------------------------------------------------------ discovery files
 def discovery():
     urls = [p for p, _, _ in PAGES]
@@ -772,7 +843,7 @@ def indexnow():
         except Exception as e: print(ep, "ERR", e)
 
 if __name__ == "__main__":
-    home(); about(); providers(); services(); insurance(); for_providers(); faq(); contact(); request(); notfound()
+    home(); about(); providers(); services(); insurance(); for_providers(); faq(); contact(); request(); sms_program(); terms(); privacy(); notfound()
     discovery()
     print(f"built {len(PAGES)} indexable pages")
     if "--submit" in sys.argv: indexnow()
