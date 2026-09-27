@@ -1,5 +1,5 @@
 # Bloom Mental Health · full site text
-> Generated 2026-09-25 from the live pages by tools/build.py. Source of truth: https://bloommentalhealthlv.com
+> Generated 2026-09-27 from the live pages by tools/build.py. Source of truth: https://bloommentalhealthlv.com
 
 
 ---
@@ -103,8 +103,6 @@ Our Providers
 
 All Providers
 
-MC
-
 ## Michelle Cuevas-Romero
 MSN, APRN, PMHNP-BC
 
@@ -115,8 +113,6 @@ Depression
 Bipolar disorder
 ADHD
 Languages: English · Spanish  ·  Read bio →
-
-CH
 
 ## Christopher Hansen
 MSN, APRN, PMHNP-BC
@@ -129,8 +125,6 @@ Schizophrenia
 LGBTQ+ affirming care
 Languages: English  ·  Read bio →
 
-BO
-
 ## Brenda Ortiz
 MSN, APRN, PMHNP-BC
 
@@ -141,8 +135,6 @@ Culturally responsive care
 Spanish-language care
 Complex medical and emotional needs
 Languages: English · Spanish  ·  Read bio →
-
-HB
 
 ## Heley Vannessa Erdao Bayot
 MSN, APRN, PMHNP-BC
@@ -167,6 +159,13 @@ Pediatric patients
 Substance use
 LGBTQ+ affirming care
 Languages: English  ·  Read bio →
+
+## Kanittha Thanangamsuwan
+MSN, APRN, PMHNP-BC
+
+Board-certified Psychiatric Mental Health Nurse Practitioner at Bloom Mental Health. Full bio coming soon.
+
+View profile →
 
 Insurance & Pricing
 
@@ -240,7 +239,7 @@ Our Providers
 
 ## A team that believes in meeting people where they are
 
-Five board-certified psychiatric mental health nurse practitioners, several of them nursing educators, with backgrounds in critical care, long-term care, pediatrics and substance use treatment.
+Six board-certified psychiatric mental health nurse practitioners, several of them nursing educators, with backgrounds in critical care, long-term care, pediatrics and substance use treatment.
 Meet the Team
 
 A desert lake under willow branches
@@ -266,8 +265,6 @@ Our Providers
 Every Bloom provider is a board-certified Psychiatric Mental Health Nurse Practitioner (PMHNP-BC) who treats the whole person, not simply a diagnosis.
 Request Appointment
 
-MC
-
 ## Michelle Cuevas-Romero
 MSN, APRN, PMHNP-BC
 
@@ -278,8 +275,6 @@ Depression
 Bipolar disorder
 ADHD
 Languages: English · Spanish  ·  Read bio →
-
-CH
 
 ## Christopher Hansen
 MSN, APRN, PMHNP-BC
@@ -292,8 +287,6 @@ Schizophrenia
 LGBTQ+ affirming care
 Languages: English  ·  Read bio →
 
-BO
-
 ## Brenda Ortiz
 MSN, APRN, PMHNP-BC
 
@@ -304,8 +297,6 @@ Culturally responsive care
 Spanish-language care
 Complex medical and emotional needs
 Languages: English · Spanish  ·  Read bio →
-
-HB
 
 ## Heley Vannessa Erdao Bayot
 MSN, APRN, PMHNP-BC
@@ -331,6 +322,13 @@ Substance use
 LGBTQ+ affirming care
 Languages: English  ·  Read bio →
 
+## Kanittha Thanangamsuwan
+MSN, APRN, PMHNP-BC
+
+Board-certified Psychiatric Mental Health Nurse Practitioner at Bloom Mental Health. Full bio coming soon.
+
+View profile →
+
 Your First Step
 
 ## Begin your journey toward emotional wellness today
@@ -352,10 +350,7 @@ MSN, APRN, PMHNP-BC
 Owner · Psychiatric Mental Health Nurse Practitioner
 Request Appointment
 
-MC
-
 Areas of focus
-
 Anxiety
 Depression
 Bipolar disorder
@@ -366,7 +361,6 @@ MAT
 Pediatric care
 
 Languages
-
 English
 Spanish
 
@@ -420,10 +414,7 @@ MSN, APRN, PMHNP-BC
 Psychiatric Mental Health Nurse Practitioner
 Request Appointment
 
-CH
-
 Areas of focus
-
 Care across the lifespan
 Serious mental illness
 Schizophrenia
@@ -431,7 +422,6 @@ LGBTQ+ affirming care
 Patient education
 
 Languages
-
 English
 
 NPI 1386344976
@@ -469,17 +459,13 @@ MSN, APRN, PMHNP-BC
 Psychiatric Mental Health Nurse Practitioner
 Request Appointment
 
-BO
-
 Areas of focus
-
 Care across the lifespan
 Culturally responsive care
 Spanish-language care
 Complex medical and emotional needs
 
 Languages
-
 English
 Spanish
 
@@ -518,10 +504,7 @@ MSN, APRN, PMHNP-BC
 Psychiatric Mental Health Nurse Practitioner
 Request Appointment
 
-HB
-
 Areas of focus
-
 Children and adolescents
 Autism
 ADHD
@@ -530,7 +513,6 @@ Depression
 Family-centered care
 
 Languages
-
 English
 
 NPI 1437040615
@@ -576,7 +558,6 @@ Request Appointment
 DF
 
 Areas of focus
-
 Care across the lifespan
 Pediatric patients
 Substance use
@@ -584,7 +565,6 @@ LGBTQ+ affirming care
 Patient education
 
 Languages
-
 English
 
 NPI 1164363271
@@ -605,6 +585,35 @@ Above all, Daniel believes that every patient's journey is unique. He is committ
 
 Child & Adolescent Mental Health
 Substance Use & MAT
+
+Your First Step
+
+## Begin your journey toward emotional wellness today
+
+We are accepting new patients, in person in Las Vegas and by telehealth. Flexible times, including early mornings, evenings, Saturdays and Sundays.
+Request Appointment
+
+---
+
+# Kanittha Thanangamsuwan, MSN, APRN, PMHNP-BC | Bloom Mental Health, Las Vegas
+URL: https://bloommentalhealthlv.com/providers/kanittha-thanangamsuwan/
+
+Home / Providers / Kanittha Thanangamsuwan
+
+MSN, APRN, PMHNP-BC
+
+## Kanittha Thanangamsuwan
+
+Psychiatric Mental Health Nurse Practitioner
+Request Appointment
+
+NPI 1831044650
+
+## Meet Kanittha
+
+Kanittha Thanangamsuwan, MSN, APRN, PMHNP-BC, is a board-certified Psychiatric Mental Health Nurse Practitioner at Bloom Mental Health in Las Vegas.
+
+A full biography is coming soon. To ask about scheduling with Kanittha, call the office or request an appointment online.
 
 Your First Step
 
@@ -732,8 +741,6 @@ Providers
 
 ## Who you may see
 
-MC
-
 ## Michelle Cuevas-Romero
 MSN, APRN, PMHNP-BC
 
@@ -744,8 +751,6 @@ Depression
 Bipolar disorder
 ADHD
 Languages: English · Spanish  ·  Read bio →
-
-CH
 
 ## Christopher Hansen
 MSN, APRN, PMHNP-BC
@@ -758,8 +763,6 @@ Schizophrenia
 LGBTQ+ affirming care
 Languages: English  ·  Read bio →
 
-BO
-
 ## Brenda Ortiz
 MSN, APRN, PMHNP-BC
 
@@ -770,8 +773,6 @@ Culturally responsive care
 Spanish-language care
 Complex medical and emotional needs
 Languages: English · Spanish  ·  Read bio →
-
-HB
 
 ## Heley Vannessa Erdao Bayot
 MSN, APRN, PMHNP-BC
@@ -852,8 +853,6 @@ Providers
 
 ## Who you may see
 
-MC
-
 ## Michelle Cuevas-Romero
 MSN, APRN, PMHNP-BC
 
@@ -864,8 +863,6 @@ Depression
 Bipolar disorder
 ADHD
 Languages: English · Spanish  ·  Read bio →
-
-CH
 
 ## Christopher Hansen
 MSN, APRN, PMHNP-BC
@@ -878,8 +875,6 @@ Schizophrenia
 LGBTQ+ affirming care
 Languages: English  ·  Read bio →
 
-BO
-
 ## Brenda Ortiz
 MSN, APRN, PMHNP-BC
 
@@ -890,8 +885,6 @@ Culturally responsive care
 Spanish-language care
 Complex medical and emotional needs
 Languages: English · Spanish  ·  Read bio →
-
-HB
 
 ## Heley Vannessa Erdao Bayot
 MSN, APRN, PMHNP-BC
@@ -972,8 +965,6 @@ Providers
 
 ## Who you may see
 
-MC
-
 ## Michelle Cuevas-Romero
 MSN, APRN, PMHNP-BC
 
@@ -984,8 +975,6 @@ Depression
 Bipolar disorder
 ADHD
 Languages: English · Spanish  ·  Read bio →
-
-HB
 
 ## Heley Vannessa Erdao Bayot
 MSN, APRN, PMHNP-BC
@@ -1053,8 +1042,6 @@ Providers
 
 ## Who you may see
 
-MC
-
 ## Michelle Cuevas-Romero
 MSN, APRN, PMHNP-BC
 
@@ -1065,8 +1052,6 @@ Depression
 Bipolar disorder
 ADHD
 Languages: English · Spanish  ·  Read bio →
-
-HB
 
 ## Heley Vannessa Erdao Bayot
 MSN, APRN, PMHNP-BC
@@ -1133,8 +1118,6 @@ Services, availability and age ranges can change. Please contact our office at 7
 Providers
 
 ## Who you may see
-
-MC
 
 ## Michelle Cuevas-Romero
 MSN, APRN, PMHNP-BC
@@ -1250,8 +1233,6 @@ Providers
 
 ## Who you may see
 
-HB
-
 ## Heley Vannessa Erdao Bayot
 MSN, APRN, PMHNP-BC
 
@@ -1262,8 +1243,6 @@ Autism
 ADHD
 Anxiety
 Languages: English  ·  Read bio →
-
-MC
 
 ## Michelle Cuevas-Romero
 MSN, APRN, PMHNP-BC
@@ -1341,8 +1320,6 @@ Providers
 
 ## Who you may see
 
-HB
-
 ## Heley Vannessa Erdao Bayot
 MSN, APRN, PMHNP-BC
 
@@ -1353,8 +1330,6 @@ Autism
 ADHD
 Anxiety
 Languages: English  ·  Read bio →
-
-MC
 
 ## Michelle Cuevas-Romero
 MSN, APRN, PMHNP-BC
@@ -1467,8 +1442,6 @@ Services, availability and age ranges can change. Please contact our office at 7
 Providers
 
 ## Who you may see
-
-MC
 
 ## Michelle Cuevas-Romero
 MSN, APRN, PMHNP-BC
@@ -1595,8 +1568,6 @@ Providers
 
 ## Who you may see
 
-MC
-
 ## Michelle Cuevas-Romero
 MSN, APRN, PMHNP-BC
 
@@ -1607,8 +1578,6 @@ Depression
 Bipolar disorder
 ADHD
 Languages: English · Spanish  ·  Read bio →
-
-CH
 
 ## Christopher Hansen
 MSN, APRN, PMHNP-BC
@@ -1621,8 +1590,6 @@ Schizophrenia
 LGBTQ+ affirming care
 Languages: English  ·  Read bio →
 
-BO
-
 ## Brenda Ortiz
 MSN, APRN, PMHNP-BC
 
@@ -1633,8 +1600,6 @@ Culturally responsive care
 Spanish-language care
 Complex medical and emotional needs
 Languages: English · Spanish  ·  Read bio →
-
-HB
 
 ## Heley Vannessa Erdao Bayot
 MSN, APRN, PMHNP-BC

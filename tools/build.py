@@ -27,6 +27,13 @@ ICONS = {
 ARROW = '<span class="arrow" aria-hidden="true"><svg viewBox="0 0 18 18"><path d="M2 9h13M10 4l5 5-5 5"/></svg></span>'
 def icon(k): return f'<svg viewBox="0 0 34 34" aria-hidden="true">{ICONS[k]}</svg>'
 PROV = {p["slug"]: p for p in PROVIDERS}
+# Headshot if the file exists, else the monogram (assets/team/<slug>.webp, 640x800).
+for _p in PROVIDERS:
+    _p["photo"] = f'/assets/team/{_p["slug"]}.webp' if os.path.exists(os.path.join(ROOT, "assets", "team", f'{_p["slug"]}.webp')) else None
+def face(p, cls="monogram"):
+    if p.get("photo"):
+        return f'<img class="{cls} face" src="{p["photo"]}" alt="{E(p["name"])}, {E(p["creds"])}" width="640" height="800" loading="lazy" decoding="async">'
+    return f'<span class="{cls}" aria-hidden="true">{p["initials"]}</span>'
 SVC = {s["slug"]: s for s in SERVICES}
 ADDR_ONE = f'{P["street"]}, {P["city"]}, {P["region"]} {P["zip"]}'
 
@@ -68,6 +75,7 @@ def person_ld(p):
         "hasCredential": {"@type": "EducationalOccupationalCredential", "credentialCategory": "Board certification", "name": "PMHNP-BC, Psychiatric-Mental Health Nurse Practitioner (Board Certified)"},
         "alumniOf": {"@type": "CollegeOrUniversity", "name": p["alumni"]} if p.get("alumni") else None,
         "description": p["short"],
+        "image": f'{SITE}{p["photo"]}' if p.get("photo") else None,
     }
 def service_ld(s):
     return {"@context": "https://schema.org", "@type": "Service", "@id": f'{SITE}/services/{s["slug"]}/#service', "name": s["name"],
@@ -262,13 +270,14 @@ def svc_rows(items, cls="svc-list"):
 def member_card(p, h="h3"):
     tags = "".join(f"<li>{E(x)}</li>" for x in p["focus"][:4])
     lang = " · ".join(p["languages"])
+    more = (f"Languages: {E(lang)} &nbsp;·&nbsp; " if lang else "") + ("Read bio &rarr;" if not p.get("bio_pending") else "View profile &rarr;")
     return f'''      <a class="member rise" href="/providers/{p["slug"]}/">
-        <span class="monogram" aria-hidden="true">{p["initials"]}</span>
-        <{h}>{E(p["name"])}</{h}>
+        {face(p)}
+        <{h}{' class="long-name"' if max(len(w) for w in p["name"].split()) > 11 else ''}>{" ".join(f'<span class="nw">{E(w)}</span>' for w in p["name"].split())}</{h}>
         <span class="cred">{E(p["creds"])}</span>
         <p>{E(p["short"])}</p>
-        <ul class="tags">{tags}</ul>
-        <span class="more">Languages: {E(lang)} &nbsp;·&nbsp; Read bio &rarr;</span>
+        {f'<ul class="tags">{tags}</ul>' if tags else ''}
+        <span class="more">{more}</span>
       </a>'''
 
 # ------------------------------------------------------------------ pages
@@ -430,7 +439,7 @@ def about():
 
 {scene("lake-willow", '''      <p class="label">Our Providers</p>
       <h2>A team that believes in <em>meeting people where they are</em></h2>
-      <p class="body">Five board-certified psychiatric mental health nurse practitioners, several of them nursing educators, with backgrounds in critical care, long-term care, pediatrics and substance use treatment.</p>
+      <p class="body">Six board-certified psychiatric mental health nurse practitioners, several of them nursing educators, with backgrounds in critical care, long-term care, pediatrics and substance use treatment.</p>
       <div class="actions"><a class="pill pill-line" href="/providers/">Meet the Team</a></div>''', label="Our providers")}
 
 {begin("ab-begin-title")}'''
@@ -468,11 +477,9 @@ def provider(p):
   <section class="band band-tight" aria-label="Biography">
     <div class="prose">
       <aside class="prose-side rise">
-        <div class="bio-head"><span class="monogram" aria-hidden="true">{p["initials"]}</span></div>
-        <p class="label" style="margin-top:30px">Areas of focus</p>
-        <ul class="tags">{"".join(f"<li>{E(x)}</li>" for x in p["focus"])}</ul>
-        <p class="label" style="margin-top:30px">Languages</p>
-        <ul class="tags">{"".join(f"<li>{E(x)}</li>" for x in p["languages"])}</ul>
+        <div class="bio-head">{face(p, "monogram portrait" if p.get("photo") else "monogram")}</div>
+        {f'<p class="label" style="margin-top:30px">Areas of focus</p><ul class="tags">{"".join(f"<li>{E(x)}</li>" for x in p["focus"])}</ul>' if p["focus"] else ""}
+        {f'<p class="label" style="margin-top:30px">Languages</p><ul class="tags">{"".join(f"<li>{E(x)}</li>" for x in p["languages"])}</ul>' if p["languages"] else ""}
         <p class="note" style="margin-top:30px">NPI {p["npi"]}</p>
       </aside>
       <div class="prose-main rise">
@@ -821,7 +828,7 @@ Sitemap: """ + SITE + "/sitemap.xml\n"
          f"- Ages: {', '.join(P['ages'])}", f"- Languages: {', '.join(P['languages'])}", "", "## Services"]
     L += [f"- [{s['name']}]({SITE}/services/{s['slug']}/): {s['short']}" for s in SERVICES]
     L += ["", "## Providers (all PMHNP-BC)"]
-    L += [f"- [{p['name']}, {p['creds']}]({SITE}/providers/{p['slug']}/): {p['short']} Languages: {', '.join(p['languages'])}." for p in PROVIDERS]
+    L += [f"- [{p['name']}, {p['creds']}]({SITE}/providers/{p['slug']}/): {p['short']}" + (f" Languages: {', '.join(p['languages'])}." if p['languages'] else "") for p in PROVIDERS]
     L += ["", "## Insurance and pricing", f"- Credentialed: {', '.join(INSURANCE)}.", f"- Pending credentialing: {', '.join(INSURANCE_PENDING)}.",
           f"- Self-pay: ${P['self_pay']['initial']} initial visit, ${P['self_pay']['follow_up']} follow-up visit.",
           "- Participation and benefits change; tell people to call the office to confirm coverage.", "",

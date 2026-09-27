@@ -189,7 +189,15 @@
         "Patient education"
       ],
       "url": "https://bloommentalhealthlv.com/providers/daniel-fite/"
+    },
+    {
+      "name": "Kanittha Thanangamsuwan",
+      "credentials": "MSN, APRN, PMHNP-BC",
+      "npi": "1831044650",
+      "languages": [],
+      "focus": [],
+      "url": "https://bloommentalhealthlv.com/providers/kanittha-thanangamsuwan/"
     }
   ],
-  "updated": "2026-09-25"
+  "updated": "2026-09-27"
 }

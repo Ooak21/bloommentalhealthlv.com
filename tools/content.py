@@ -46,7 +46,10 @@ SCENES = {
 }
 
 # ---------------------------------------------------------------- providers
-# Order = Michelle's email order. Kanittha Thanangamsuwan, APRN is on the roster but no bio was sent: not listed until one arrives.
+# Order = Michelle's email order. Headshots: assets/team/<slug>.webp from Michelle's Drive "Marketing Materials" (shared 9/21),
+# cropped 4:5; a provider with no file keeps the monogram (Daniel: no headshot in the folder yet).
+# Kanittha Thanangamsuwan: name, credentials and NPI from her business card + Michelle's 9/9 NPI list. No bio sent yet
+# (Luis 9/27: list her with what we have, update when it arrives). No languages/focus/services are claimed for her.
 PROVIDERS = [
     {
         "slug": "michelle-cuevas-romero", "name": "Michelle Cuevas-Romero", "creds": "MSN, APRN, PMHNP-BC",
@@ -120,12 +123,22 @@ PROVIDERS = [
             "His passion for education also extends to the next generation of healthcare professionals. As a nursing instructor, Daniel teaches and mentors nursing students, emphasizing clinical knowledge, compassion, and patient-centered care.",
             "Above all, Daniel believes that every patient's journey is unique. He is committed to meeting individuals where they are and providing personalized care that considers the whole person, not simply a diagnosis.",
         ],
+    },    {
+        "slug": "kanittha-thanangamsuwan", "name": "Kanittha Thanangamsuwan", "creds": "MSN, APRN, PMHNP-BC",
+        "role": "Psychiatric Mental Health Nurse Practitioner", "npi": "1831044650", "initials": "KT",
+        "languages": [], "focus": [], "bio_pending": True,
+        "short": "Board-certified Psychiatric Mental Health Nurse Practitioner at Bloom Mental Health. Full bio coming soon.",
+        "bio": [
+            "Kanittha Thanangamsuwan, MSN, APRN, PMHNP-BC, is a board-certified Psychiatric Mental Health Nurse Practitioner at Bloom Mental Health in Las Vegas.",
+            "A full biography is coming soon. To ask about scheduling with Kanittha, call the office or request an appointment online.",
+        ],
     },
 ]
 
 # ---------------------------------------------------------------- services
 # "short" = the packet's own one-line description. The body copy expands it without adding claims about the practice.
-ALL = [p["slug"] for p in PROVIDERS]
+# Services "all providers" = the providers with a full bio. Kanittha is not attached to any service until her bio says what she does.
+ALL = [p["slug"] for p in PROVIDERS if not p.get("bio_pending")]
 SERVICES = [
     {
         "slug": "psychiatric-evaluations", "name": "Psychiatric Evaluations", "scene": "pine-forest", "icon": "rings",
