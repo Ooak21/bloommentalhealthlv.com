@@ -267,6 +267,14 @@ def svc_rows(items, cls="svc-list"):
       </a></li>''' for s in items)
     return f'    <ul class="{cls}">\n{rows}\n    </ul>'
 
+def payer_tiles():
+    def tile(x):
+        logos = PAYER_LOGOS.get(x) or []
+        if not logos: return f"<li>{E(x)}</li>"
+        imgs = "".join(f'<img src="/assets/payers/{f}" alt="" loading="lazy" decoding="async">' for f in logos)
+        return f'<li class="payer"><span class="payer-logos{" two" if len(logos) > 1 else ""}">{imgs}</span><span class="payer-name">{E(x)}</span></li>'
+    return f'<ul class="plans logos rise">{"".join(tile(x) for x in INSURANCE)}</ul>'
+
 def member_card(p, h="h3"):
     tags = "".join(f"<li>{E(x)}</li>" for x in p["focus"][:4])
     lang = " · ".join(p["languages"])
@@ -392,7 +400,7 @@ def home():
       </div>
       <a class="pill pill-line" href="/insurance/">Insurance Details</a>
     </div>
-    <ul class="plans rise">{"".join(f"<li>{E(x)}</li>" for x in INSURANCE)}</ul>
+    {payer_tiles()}
     <p class="note rise" style="margin-top:22px">Self-pay: ${P["self_pay"]["initial"]} initial visit, ${P["self_pay"]["follow_up"]} follow-up. Plan participation and benefits can change, so please call to confirm your coverage.</p>
   </section>
 
@@ -559,7 +567,7 @@ def insurance():
   <section class="band band-tight" aria-labelledby="cred-title">
     <p class="label rise">Credentialed Insurances</p>
     <h2 id="cred-title" class="rise" style="margin-bottom:40px">Plans we <em>accept</em></h2>
-    <ul class="plans rise">{"".join(f"<li>{E(x)}</li>" for x in INSURANCE)}</ul>
+    {payer_tiles()}
     <p class="label rise" style="margin-top:60px">Pending Credentialing</p>
     <ul class="plans pending rise">{"".join(f"<li>{E(x)}</li>" for x in INSURANCE_PENDING)}</ul>
     <p class="note rise" style="margin-top:26px">Because insurance participation and plan benefits can change, please contact our office at <a href="tel:{P["phone"].replace("-", "")}">{P["phone"]}</a> to confirm your coverage before your first visit.</p>

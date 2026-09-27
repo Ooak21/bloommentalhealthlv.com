@@ -33,6 +33,13 @@ MAPS_EMBED = "https://www.google.com/maps?q=2450+Chandler+Ave+Ste+1,+Las+Vegas,+
 MAPS_DIR = "https://www.google.com/maps/dir/?api=1&destination=2450+Chandler+Ave+Ste+1,+Las+Vegas,+NV+89120"
 
 INSURANCE = ["Aetna", "Carelon (BCBS)", "CareSource", "Evernorth (Cigna)", "Medicare", "UHC / Optum", "UMR", "Alignment", "Medicaid FFS"]
+# Payer logos, downloaded 2026-09-27 from each payer's own website header (Luis: "the actual logos ... adds some color").
+# Medicaid FFS in Nevada is run by the Nevada Health Authority (formerly DHCFP), so its mark is shown for that line.
+PAYER_LOGOS = {
+    "Aetna": ["aetna.svg"], "Carelon (BCBS)": ["carelon.svg"], "CareSource": ["caresource.svg"], "Evernorth (Cigna)": ["evernorth.svg"],
+    "Medicare": ["medicare.svg"], "UHC / Optum": ["uhc.svg", "optum.svg"], "UMR": ["umr.svg"], "Alignment": ["alignment.webp"],
+    "Medicaid FFS": ["nevada-medicaid.webp"],
+}
 INSURANCE_PENDING = ["Culinary Health Fund", "SilverSummit", "Molina", "Sierra Health and Life HPN", "Medicaid MCOs"]
 
 # ---------------------------------------------------------------- scenes
