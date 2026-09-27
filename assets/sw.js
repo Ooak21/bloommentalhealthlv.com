@@ -386,12 +386,14 @@ const Water = (() => {
   const fig = document.getElementById("lens"); if (!fig) return;
   const vid = document.getElementById('lensVid');
   const cv = document.getElementById('lensGl');
+  // No-WebGL path: CSS :hover brings the color back for a mouse; a tap toggles it on touch.
+  fig.addEventListener('pointerdown', e => { if (e.pointerType === 'touch' && !fig.classList.contains('gl')) fig.classList.toggle('color'); });
   const gl = cv.getContext('webgl', { premultipliedAlpha: false });
   if (!gl) return;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const N = 10;
   const fs = `precision highp float;
-  varying vec2 v; uniform sampler2D T; uniform float uT; uniform float uA; uniform vec4 uR[${N}];
+  varying vec2 v; uniform sampler2D T; uniform float uT; uniform float uA; uniform float uS; uniform vec4 uR[${N}];
   void main(){
     vec2 uv = v, off = vec2(0.0);
     for(int i=0;i<${N};i++){
@@ -404,6 +406,10 @@ const Water = (() => {
     }
     off += vec2(sin(uv.y * 22.0 + uT * 0.8), cos(uv.x * 18.0 + uT * 0.6)) * 0.0012;
     vec3 c = texture2D(T, uv + off).rgb;
+    // Black and white at rest (Isaac's look: desaturated, a little more contrast, a little darker); uS eases to full color on hover.
+    float g = dot(c, vec3(0.299, 0.587, 0.114));
+    vec3 bw = vec3(clamp((g - 0.5) * 1.25 + 0.42, 0.0, 1.0));
+    c = mix(bw, c, smoothstep(0.0, 1.0, uS));
     c += length(off) * 6.0;
     gl_FragColor = vec4(c, 1.0);
   }`;
@@ -414,7 +420,9 @@ const Water = (() => {
   gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
   const pl = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(pl); gl.vertexAttribPointer(pl, 2, gl.FLOAT, false, 0, 0);
-  const uT = gl.getUniformLocation(pr, 'uT'), uA = gl.getUniformLocation(pr, 'uA'), uR = gl.getUniformLocation(pr, 'uR');
+  const uT = gl.getUniformLocation(pr, 'uT'), uA = gl.getUniformLocation(pr, 'uA'), uR = gl.getUniformLocation(pr, 'uR'), uS = gl.getUniformLocation(pr, 'uS');
+  // Color on hover (Luis 9/27): sat eases toward its target every frame, ~1s either way. Touch has no hover, so a tap toggles it.
+  let sat = 0, satTo = 0, lastF = performance.now();
   const rip = new Float32Array(N * 4); let slot = 0;
   const t0 = performance.now(); const now = () => (performance.now() - t0) / 1000;
   let visible = false, ready = false, running = false;
@@ -440,7 +448,9 @@ const Water = (() => {
   }
   function draw(){
     if (vid.readyState >= 2){ try { upload(); } catch (e) { ready = false; fig.classList.remove('gl'); return; } }
-    gl.uniform1f(uT, now()); gl.uniform1f(uA, cv.width / cv.height); gl.uniform4fv(uR, rip);
+    const tf = performance.now(), dt = Math.min(0.5, (tf - lastF) / 1000); lastF = tf;
+    sat = reduce ? satTo : sat + (satTo - sat) * (1 - Math.exp(-dt * 3.2));
+    gl.uniform1f(uT, now()); gl.uniform1f(uA, cv.width / cv.height); gl.uniform1f(uS, sat); gl.uniform4fv(uR, rip);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
   }
   function loop(){ if (!visible || reduce || !ready){ running = false; return; } draw(); requestAnimationFrame(loop); }
@@ -458,8 +468,10 @@ const Water = (() => {
     if (t - last < 90 || Math.hypot(e.clientX - lx, e.clientY - ly) < 14) return;
     last = t; lx = e.clientX; ly = e.clientY; add(e, 0.8);
   });
-  fig.addEventListener('pointerenter', e => add(e, 1.2));
-  fig.addEventListener('pointerdown', e => add(e, 1.8));
+  const setSat = (on) => { satTo = on ? 1 : 0; fig.classList.toggle('color', on); if (reduce && ready) draw(); };
+  fig.addEventListener('pointerenter', e => { add(e, 1.2); if (e.pointerType !== 'touch') setSat(true); });
+  fig.addEventListener('pointerleave', e => { if (e.pointerType !== 'touch') setSat(false); });
+  fig.addEventListener('pointerdown', e => { add(e, 1.8); if (e.pointerType === 'touch') setSat(!satTo); });
   new IntersectionObserver(es => {
     visible = es[0].isIntersecting;
     if (visible) vid.play().catch(() => {}); else vid.pause();
