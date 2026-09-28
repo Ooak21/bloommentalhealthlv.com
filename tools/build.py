@@ -30,6 +30,8 @@ PROV = {p["slug"]: p for p in PROVIDERS}
 # Headshot if the file exists, else the monogram (assets/team/<slug>.webp, 640x800).
 for _p in PROVIDERS:
     _p["photo"] = f'/assets/team/{_p["slug"]}.webp' if os.path.exists(os.path.join(ROOT, "assets", "team", f'{_p["slug"]}.webp')) else None
+    # Profile page: the same headshot with the background removed (Apple Vision cut-out, 760 wide, alpha), shown large.
+    _p["cutout"] = f'/assets/team/{_p["slug"]}-cut.webp' if os.path.exists(os.path.join(ROOT, "assets", "team", f'{_p["slug"]}-cut.webp')) else None
 def face(p, cls="monogram"):
     if p.get("photo"):
         return f'<img class="{cls} face" src="{p["photo"]}" alt="{E(p["name"])}, {E(p["creds"])}" width="640" height="800" loading="lazy" decoding="async">'
@@ -482,10 +484,10 @@ def provider(p):
       <ul>{"".join(f'<li><a href="/services/{s["slug"]}/">{E(s["name"])}</a></li>' for s in mine)}</ul>''' if mine else ""
     body = f'''{hero_scene("leaves-light", E(p["creds"]), E(p["name"]), E(p["role"]), REQ, trail)}
 
-  <section class="band band-tight" aria-label="Biography">
-    <div class="prose">
+  <section class="band band-tight bio-solid" aria-label="Biography">
+    <div class="prose{" prose-cut" if p.get("cutout") else ""}">
       <aside class="prose-side rise">
-        <div class="bio-head">{face(p, "monogram portrait" if p.get("photo") else "monogram")}</div>
+        <div class="bio-head">{f'<img class="cutout" src="{p["cutout"]}" alt="{E(p["name"])}, {E(p["creds"])}" width="760" height="940" decoding="async" fetchpriority="high">' if p.get("cutout") else face(p, "monogram portrait" if p.get("photo") else "monogram")}</div>
         {f'<p class="label" style="margin-top:30px">Areas of focus</p><ul class="tags">{"".join(f"<li>{E(x)}</li>" for x in p["focus"])}</ul>' if p["focus"] else ""}
         {f'<p class="label" style="margin-top:30px">Languages</p><ul class="tags">{"".join(f"<li>{E(x)}</li>" for x in p["languages"])}</ul>' if p["languages"] else ""}
         <p class="note" style="margin-top:30px">NPI {p["npi"]}</p>
