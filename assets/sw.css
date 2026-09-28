@@ -527,10 +527,31 @@ main.page.arrive{transition:opacity 1.3s cubic-bezier(.2,.7,.2,1), transform 1.3
    scene below stay as they were; the headshot is a background-removed cut-out, large, fading into the field at the waist */
 .bio-solid{position:relative;z-index:1;background:linear-gradient(180deg,rgba(7,9,10,0) 0,var(--ink) clamp(60px,9vh,120px),var(--ink) calc(100% - clamp(80px,12vh,160px)),rgba(7,9,10,0) 100%)}
 .bio-solid .prose-main p,.bio-solid .prose-main li{text-shadow:none}
-.prose.prose-cut{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
-.bio-head .cutout{display:block;width:100%;max-width:560px;height:auto;margin:0 auto;
-  -webkit-mask-image:linear-gradient(180deg,#000 72%,transparent 100%);mask-image:linear-gradient(180deg,#000 72%,transparent 100%)}
-.bio-head:has(.cutout){position:relative;display:block}
-.bio-head:has(.cutout)::before{content:"";position:absolute;left:8%;right:8%;top:6%;bottom:18%;border-radius:50%;background:radial-gradient(closest-side,rgba(238,154,158,.16),rgba(238,154,158,0));z-index:-1}
-.prose-cut .prose-side{position:static}
-@media (max-width:1000px){.prose.prose-cut{grid-template-columns:minmax(0,1fr)}.bio-head .cutout{max-width:420px}}
+/* profile aside (9/27 v2): arch portrait + credential card */
+.prose.prose-cut{grid-template-columns:minmax(0,4fr) minmax(0,7fr)}
+.prose-cut .prose-side{position:static;display:grid;gap:22px;max-width:330px}
+@media (min-width:1001px) and (min-height:980px){.prose-cut .prose-side{position:sticky;top:112px}}
+.arch-portrait{position:relative;margin:0;width:100%;aspect-ratio:4/5;padding-top:12%;box-sizing:border-box;
+  clip-path:inset(-4% 0 0 0 round 0 0 22px 22px)}
+.arch-bg{position:absolute;left:0;right:0;bottom:0;top:12%;border-radius:999px 999px 22px 22px;border:1px solid rgba(238,154,158,.28);
+  background:radial-gradient(120% 70% at 50% 0%,rgba(238,154,158,.30),rgba(238,154,158,0) 62%),linear-gradient(180deg,#1a1417 0%,#0f1113 55%,#0b0d0e 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 30px 60px -30px rgba(0,0,0,.9)}
+.arch-bg::after{content:"";position:absolute;inset:10px;border-radius:999px 999px 14px 14px;border:1px solid rgba(234,241,243,.07)}
+.arch-portrait img{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:94%;height:auto;display:block;
+  -webkit-mask-image:linear-gradient(180deg,#000 80%,rgba(0,0,0,.35) 100%);mask-image:linear-gradient(180deg,#000 80%,rgba(0,0,0,.35) 100%)}
+.cred-card{margin:0;border:1px solid var(--hair);border-radius:18px;background:rgba(234,241,243,.025);overflow:hidden}
+.cred-who{padding:18px 20px 16px;display:grid;gap:4px;border-bottom:1px solid var(--hair)}
+.cred-name{font-family:var(--display);font-size:24px;line-height:1.15;color:var(--water)}
+.cred-letters{font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.cred-row{padding:14px 20px;border-bottom:1px solid var(--hair);display:grid;gap:10px}
+.cred-row:last-child{border-bottom:0}
+.cred-row dt{font-size:10px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--mist)}
+.cred-row dd{margin:0;font-size:14px;color:var(--water-soft);font-weight:400}
+.cred-row .dot{color:var(--accent);margin:0 6px}
+.cred-inline{grid-template-columns:auto 1fr;align-items:baseline}
+.cred-inline dd{text-align:right}
+.npi{font-variant-numeric:tabular-nums;letter-spacing:.08em;color:var(--water)}
+.focus{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.focus li{font-size:12px;line-height:1;padding:7px 11px;border-radius:999px;background:rgba(238,154,158,.08);border:1px solid rgba(238,154,158,.22);color:var(--water)}
+@media (max-width:1000px){.prose.prose-cut{grid-template-columns:minmax(0,1fr)}.prose-cut .prose-side{position:static;max-width:420px;margin:0 auto;width:100%}}
+.arch-empty .arch-mono{position:absolute;left:0;right:0;top:12%;bottom:0;display:grid;place-items:center;font-family:var(--display);font-weight:300;font-size:clamp(56px,6vw,84px);letter-spacing:.06em;color:var(--accent)}

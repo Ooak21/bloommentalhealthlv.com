@@ -350,6 +350,7 @@ MSN, APRN, PMHNP-BC
 Owner · Psychiatric Mental Health Nurse Practitioner
 Request Appointment
 
+Michelle Cuevas-RomeroMSN, APRN, PMHNP-BC
 Areas of focus
 Anxiety
 Depression
@@ -359,12 +360,8 @@ Autism
 Substance use
 MAT
 Pediatric care
-
-Languages
-English
-Spanish
-
-NPI 1568358786
+LanguagesEnglish · Spanish
+NPI1568358786
 
 ## Meet Michelle
 
@@ -414,17 +411,15 @@ MSN, APRN, PMHNP-BC
 Psychiatric Mental Health Nurse Practitioner
 Request Appointment
 
+Christopher HansenMSN, APRN, PMHNP-BC
 Areas of focus
 Care across the lifespan
 Serious mental illness
 Schizophrenia
 LGBTQ+ affirming care
 Patient education
-
-Languages
-English
-
-NPI 1386344976
+LanguagesEnglish
+NPI1386344976
 
 ## Meet Christopher
 
@@ -459,17 +454,14 @@ MSN, APRN, PMHNP-BC
 Psychiatric Mental Health Nurse Practitioner
 Request Appointment
 
+Brenda OrtizMSN, APRN, PMHNP-BC
 Areas of focus
 Care across the lifespan
 Culturally responsive care
 Spanish-language care
 Complex medical and emotional needs
-
-Languages
-English
-Spanish
-
-NPI 1265263370
+LanguagesEnglish · Spanish
+NPI1265263370
 
 ## Meet Brenda
 
@@ -504,6 +496,7 @@ MSN, APRN, PMHNP-BC
 Psychiatric Mental Health Nurse Practitioner
 Request Appointment
 
+Heley Vannessa Erdao BayotMSN, APRN, PMHNP-BC
 Areas of focus
 Children and adolescents
 Autism
@@ -511,11 +504,8 @@ ADHD
 Anxiety
 Depression
 Family-centered care
-
-Languages
-English
-
-NPI 1437040615
+LanguagesEnglish
+NPI1437040615
 
 ## Meet Heley
 
@@ -557,17 +547,15 @@ Request Appointment
 
 DF
 
+Daniel Hunter FiteMSN, APRN, PMHNP-BC
 Areas of focus
 Care across the lifespan
 Pediatric patients
 Substance use
 LGBTQ+ affirming care
 Patient education
-
-Languages
-English
-
-NPI 1164363271
+LanguagesEnglish
+NPI1164363271
 
 ## Meet Daniel
 
@@ -607,7 +595,9 @@ MSN, APRN, PMHNP-BC
 Psychiatric Mental Health Nurse Practitioner
 Request Appointment
 
-NPI 1831044650
+Kanittha ThanangamsuwanMSN, APRN, PMHNP-BC
+
+NPI1831044650
 
 ## Meet Kanittha
 

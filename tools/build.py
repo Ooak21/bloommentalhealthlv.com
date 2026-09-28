@@ -90,6 +90,13 @@ def faq_ld(items):
 # ------------------------------------------------------------------ shell
 NAV = [("/", "Home"), ("/about-us/", "About"), ("/providers/", "Providers"), ("/services/", "Services"), ("/insurance/", "Insurance"), ("/contact/", "Contact")]
 
+import hashlib
+_VER = {}
+def asset_ver(name):
+    if name not in _VER:
+        _VER[name] = hashlib.sha256(open(os.path.join(ROOT, "assets", name), "rb").read()).hexdigest()[:10]
+    return _VER[name]
+
 def page(path, title, desc, body, ld, og_image="/assets/share.jpg", noindex=False):
     here = "/" + path.strip("/").split("/")[0] + "/" if path != "/" else "/"
     links = "\n".join(f'    <li><a href="{u}"{" aria-current=\"page\"" if u == here else ""}>{n}</a></li>' for u, n in NAV)
@@ -208,6 +215,9 @@ def page(path, title, desc, body, ld, og_image="/assets/share.jpg", noindex=Fals
 '''
     out = os.path.join(ROOT, path.strip("/"), "index.html") if path.endswith("/") else os.path.join(ROOT, path.strip("/"))
     os.makedirs(os.path.dirname(out), exist_ok=True)
+    # Cache-bust the shared CSS/JS: a deploy must never pair new HTML with a stale stylesheet (Luis 9/27 saw exactly that).
+    for a in ("sw.css", "sw.js", "site.js", "chat.js"):
+        doc = doc.replace(f'/assets/{a}"', f'/assets/{a}?v={asset_ver(a)}"')
     open(out, "w").write(doc)
     if not noindex: PAGES.append((path, title, text_of(body)))
 
@@ -276,6 +286,19 @@ def payer_tiles():
         imgs = "".join(f'<img src="/assets/payers/{f}" alt="" loading="lazy" decoding="async">' for f in logos)
         return f'<li class="payer"><span class="payer-logos{" two" if len(logos) > 1 else ""}">{imgs}</span><span class="payer-name">{E(x)}</span></li>'
     return f'<ul class="plans logos rise">{"".join(tile(x) for x in INSURANCE)}</ul>'
+
+def portrait(p):
+    """Profile portrait: the background-removed headshot standing in an arch, head breaking the top edge."""
+    if p.get("cutout"):
+        return f'''<figure class="arch-portrait">
+          <span class="arch-bg" aria-hidden="true"></span>
+          <img src="{p["cutout"]}" alt="{E(p["name"])}, {E(p["creds"])}" width="760" height="940" decoding="async" fetchpriority="high">
+        </figure>'''
+    # No headshot yet (Daniel): the same arch, with the monogram set inside it.
+    return f'''<figure class="arch-portrait arch-empty">
+          <span class="arch-bg" aria-hidden="true"></span>
+          <span class="arch-mono" aria-hidden="true">{p["initials"]}</span>
+        </figure>'''
 
 def member_card(p, h="h3"):
     tags = "".join(f"<li>{E(x)}</li>" for x in p["focus"][:4])
@@ -485,12 +508,15 @@ def provider(p):
     body = f'''{hero_scene("leaves-light", E(p["creds"]), E(p["name"]), E(p["role"]), REQ, trail)}
 
   <section class="band band-tight bio-solid" aria-label="Biography">
-    <div class="prose{" prose-cut" if p.get("cutout") else ""}">
+    <div class="prose prose-cut">
       <aside class="prose-side rise">
-        <div class="bio-head">{f'<img class="cutout" src="{p["cutout"]}" alt="{E(p["name"])}, {E(p["creds"])}" width="760" height="940" decoding="async" fetchpriority="high">' if p.get("cutout") else face(p, "monogram portrait" if p.get("photo") else "monogram")}</div>
-        {f'<p class="label" style="margin-top:30px">Areas of focus</p><ul class="tags">{"".join(f"<li>{E(x)}</li>" for x in p["focus"])}</ul>' if p["focus"] else ""}
-        {f'<p class="label" style="margin-top:30px">Languages</p><ul class="tags">{"".join(f"<li>{E(x)}</li>" for x in p["languages"])}</ul>' if p["languages"] else ""}
-        <p class="note" style="margin-top:30px">NPI {p["npi"]}</p>
+        {portrait(p)}
+        <dl class="cred-card">
+          <div class="cred-who"><span class="cred-name">{E(p["name"])}</span><span class="cred-letters">{E(p["creds"])}</span></div>
+          {f'<div class="cred-row"><dt>Areas of focus</dt><dd><ul class="focus">{"".join(f"<li>{E(x)}</li>" for x in p["focus"])}</ul></dd></div>' if p["focus"] else ""}
+          {f'<div class="cred-row"><dt>Languages</dt><dd>{" <span class=\"dot\" aria-hidden=\"true\">·</span> ".join(E(x) for x in p["languages"])}</dd></div>' if p["languages"] else ""}
+          <div class="cred-row cred-inline"><dt>NPI</dt><dd class="npi">{p["npi"]}</dd></div>
+        </dl>
       </aside>
       <div class="prose-main rise">
         <h2>Meet <em>{E(p["name"].split()[0])}</em></h2>
