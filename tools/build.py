@@ -802,7 +802,7 @@ def sms_program():
                           f"<em>{E(SMS_CTA)}</em>",
                           "The box is unchecked unless you check it, the form works without it, and the phone number is optional. We only text a number whose owner agreed on our form; we never text a number someone else gave us."]),
          ("Frequency and cost", ["Message frequency may vary, usually a few texts around each request or appointment. Standard Message and Data Rates may apply."]),
-         ("Stop or get help", [f"Reply <b>STOP</b> to any text to opt out. You will get one confirmation and no further messages. Reply <b>HELP</b> for help, call {tel}, or email {P['email']}. To join again later, reply START or check the box on the form again."]),
+         ("Stop or get help", [f"Reply <b>STOP</b> to any text to opt out. You will get one confirmation and no further messages. Reply <b>HELP</b> for help, call {tel}, or email {P['sms_email']}. To join again later, reply START or check the box on the form again."]),
          ("Privacy", [f"We will not share mobile information with third parties for promotional or marketing purposes. Text messaging originator opt-in data and consent will not be shared with any third parties. Details are in our {LINKS}."])],
         "Text Message Program | Bloom Mental Health", "Bloom Mental Health's optional customer-care text messages: appointment confirmations and reminders. Reply STOP to opt out, HELP for help.", "Text Message Program", extra=SMS_FORM)
 
@@ -814,7 +814,7 @@ def terms():
              "<b>Program:</b> Bloom Mental Health customer-care text messages about your request and your appointments, such as confirmations, reminders, and telehealth visit links. No marketing messages.",
              "<b>Opt-in:</b> only by checking the optional box on our appointment request form with your mobile number. Consent is not a condition of purchase or of receiving care.",
              "<b>Message frequency may vary.</b> <b>Standard Message and Data Rates may apply.</b>",
-             f"<b>Opt out:</b> reply STOP at any time; you will receive one confirmation and no further messages. <b>Help:</b> reply HELP, call {P['phone']}, or email {P['email']}.",
+             f"<b>Opt out:</b> reply STOP at any time; you will receive one confirmation and no further messages. <b>Help:</b> reply HELP, call {P['phone']}, or email {P['sms_email']}.",
              "Carriers are not liable for delayed or undelivered messages.",
              f"We will not share mobile information with third parties for promotional or marketing purposes. See our {LINKS}."]),
          ("Contact", [f"{P['name']}, {ADDR_ONE}. Phone {P['phone']}. Email {P['email']}."])],
