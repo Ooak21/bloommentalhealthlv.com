@@ -37,7 +37,7 @@
 ## Insurance and pricing
 - Credentialed: Aetna, Carelon (BCBS), CareSource, Evernorth (Cigna), Medicare, UHC / Optum, UMR, Alignment, Medicaid FFS.
 - Pending credentialing: Culinary Health Fund, SilverSummit, Molina, Sierra Health and Life HPN, Medicaid MCOs.
-- Self-pay: $90 initial visit, $50 follow-up visit.
+- Self-pay: $150 initial visit, $75 follow-up visit.
 - Participation and benefits change; tell people to call the office to confirm coverage.
 
 ## Pages

@@ -19,8 +19,8 @@
   "telehealth": true,
   "times": "Flexible times, including early mornings, evenings, Saturdays and Sundays",
   "self_pay": {
-    "initial": 90,
-    "follow_up": 50
+    "initial": 150,
+    "follow_up": 75
   },
   "insurance": {
     "credentialed": [
@@ -199,5 +199,5 @@
       "url": "https://bloommentalhealthlv.com/providers/kanittha-thanangamsuwan/"
     }
   ],
-  "updated": "2026-09-27"
+  "updated": "2026-10-17"
 }

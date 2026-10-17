@@ -329,6 +329,11 @@ section.band.band-tight{padding-top:clamp(20px,5vh,60px)}
 .nav.open .menu-toggle span:nth-child(2){opacity:0}
 .nav.open .menu-toggle span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 .nav-end{display:flex;align-items:center;gap:12px}
+/* English / Español switch (2026-10-16): the phone pill's glass, and it stays in the bar on phones (the pill hides there) */
+.lang-btn{appearance:none;-webkit-appearance:none;font:inherit;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--water);background:rgba(0,0,0,.25);border:1px solid rgba(234,241,243,.34);border-radius:999px;padding:14px 20px;cursor:pointer;white-space:nowrap;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .25s,color .25s,border-color .25s,box-shadow .3s}
+.lang-btn:hover,.lang-btn:focus-visible{border-color:var(--accent);color:var(--accent);background:rgba(238,154,158,.1);box-shadow:0 0 24px rgba(238,154,158,.18)}
+@media (max-width:760px){ .lang-btn{height:46px;padding:0 16px;letter-spacing:.1em} }
+@media (max-width:360px){ .lang-btn{padding:0 12px;letter-spacing:.06em} }
 @media (max-width:1000px){
   .menu-toggle{display:flex}
   .nav.open{background:rgba(0,0,0,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);flex-wrap:wrap}

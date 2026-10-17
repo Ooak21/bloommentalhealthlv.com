@@ -10,8 +10,19 @@
   function save() { try { sessionStorage.setItem(KEY, JSON.stringify(state)); } catch (_) {} }
   var state = load() || { sid: 'web-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10), msgs: [], open: false, sent: false };
 
-  var GREETING = "Hi, I'm Bloom's virtual assistant. I can answer questions about our services, providers, insurance and pricing, or send your appointment request to our front desk. Please don't share medical details here.";
-  var CHIPS = ['Do you take my insurance?', 'I would like an appointment', 'Do you see children?', '¿Hablan español?'];
+  // English / Español (assets/i18n.js flips the panel's labels; the conversation itself is never machine-swapped, the
+  // assistant already answers in the language the visitor writes in, so the greeting and starters follow the switch).
+  var TXT = {
+    en: { greeting: "Hi, I'm Bloom's virtual assistant. I can answer questions about our services, providers, insurance and pricing, or send your appointment request to our front desk. Please don't share medical details here.",
+          chips: ['Do you take my insurance?', 'I would like an appointment', 'Do you see children?', '¿Hablan español?'],
+          noAnswer: 'Sorry, I could not answer that right now. Please call us at 702-350-1419.',
+          offline: 'Sorry, I am having trouble connecting. Please call us at 702-350-1419.' },
+    es: { greeting: 'Hola, soy la asistente virtual de Bloom. Puedo responder preguntas sobre nuestros servicios, profesionales, seguros y precios, o enviar su solicitud de cita a nuestra recepción. Por favor, no comparta detalles médicos aquí.',
+          chips: ['¿Aceptan mi seguro?', 'Quisiera hacer una cita', '¿Atienden a niños?', '¿Cuánto cuesta sin seguro?'],
+          noAnswer: 'Lo siento, no pude responder eso en este momento. Llámenos al 702-350-1419.',
+          offline: 'Lo siento, tengo problemas de conexión. Llámenos al 702-350-1419.' }
+  };
+  function T() { return TXT[window.bloomLang === 'es' ? 'es' : 'en']; }
 
   var root = document.createElement('div');
   root.className = 'chat';
@@ -23,7 +34,7 @@
         '<button class="chat-x" type="button" aria-label="Close chat">&times;</button></header>' +
       '<p class="chat-crisis">In crisis? Call or text <a href="tel:988">988</a> or call <a href="tel:911">911</a>. This chat is not monitored around the clock.</p>' +
       '<div class="chat-log" aria-live="polite"></div>' +
-      '<div class="chat-chips"></div>' +
+      '<div class="chat-chips notrans"></div>' +
       '<form class="chat-form" autocomplete="off"><label class="sr" for="chatIn">Your message</label>' +
         '<input id="chatIn" maxlength="600" placeholder="Type your question…"><button type="submit" aria-label="Send">' +
         '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h15M13 6l6 6-6 6"/></svg></button></form>' +
@@ -38,7 +49,7 @@
   function bubble(role, text, cta) {
     var d = document.createElement('div');
     d.className = 'chat-msg ' + (role === 'user' ? 'me' : 'them');
-    var p = document.createElement('p'); p.textContent = text; d.appendChild(p);
+    var p = document.createElement('p'); p.className = 'notrans'; p.textContent = text; d.appendChild(p);
     if (cta && cta.url) {
       var a = document.createElement('a'); a.className = 'chat-cta'; a.href = cta.url; a.textContent = cta.label + ' →';
       try { var u = new URL(cta.url); if (u.origin === location.origin) a.href = u.pathname; } catch (_) {}
@@ -49,10 +60,10 @@
   }
   function render() {
     log.innerHTML = '';
-    bubble('assistant', GREETING);
+    bubble('assistant', T().greeting);
     state.msgs.forEach(function (m) { bubble(m.role, m.content, m.cta); });
     chips.innerHTML = '';
-    if (!state.msgs.length) CHIPS.forEach(function (c) {
+    if (!state.msgs.length) T().chips.forEach(function (c) {
       var b = document.createElement('button'); b.type = 'button'; b.textContent = c;
       b.addEventListener('click', function () { send(c); });
       chips.appendChild(b);
@@ -83,14 +94,14 @@
       .then(function (r) { return r.json(); })
       .then(function (j) {
         var v = j && j.status === 'success' ? j.value : null;
-        var reply = (v && v.reply) || 'Sorry, I could not answer that right now. Please call us at 702-350-1419.';
+        var reply = (v && v.reply) || T().noAnswer;
         typing(false);
         var m = { role: 'assistant', content: reply }; if (v && v.cta) m.cta = v.cta;
         state.msgs.push(m); save(); bubble('assistant', reply, m.cta);
         if (v && v.captured && !state.sent) { state.sent = true; save(); track('generate_lead', { source: 'chat' }); }
         if (v && v.crisis) track('chat_crisis_shown');
       })
-      .catch(function () { typing(false); bubble('assistant', 'Sorry, I am having trouble connecting. Please call us at 702-350-1419.'); })
+      .catch(function () { typing(false); bubble('assistant', T().offline); })
       .then(function () { busy = false; });
   }
 
@@ -98,5 +109,6 @@
   root.querySelector('.chat-x').addEventListener('click', function () { setOpen(false); fab.focus(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && state.open) { setOpen(false); fab.focus(); } });
   form.addEventListener('submit', function (e) { e.preventDefault(); send(input.value); });
+  document.addEventListener('bloomlang', function () { if (state.open) render(); });
   if (state.open && innerWidth > 760) setOpen(true);
 })();

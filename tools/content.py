@@ -28,7 +28,7 @@ PRACTICE = {
     "ages": ["Children", "Adolescents", "Adults", "Older Adults"],
     "times": "Flexible times, including early mornings, evenings, Saturdays and Sundays",
     "accepting": True,
-    "self_pay": {"initial": 90, "follow_up": 50},
+    "self_pay": {"initial": 150, "follow_up": 75},  # Michelle text 2026-10-16 (was 90 / 50)
 }
 
 MAPS_EMBED = "https://www.google.com/maps?q=2450+Chandler+Ave+Ste+1,+Las+Vegas,+NV+89120&output=embed"
@@ -313,7 +313,7 @@ FAQ = [
     ("Do you offer care in Spanish or Tagalog?", "Yes. We have bilingual providers who speak Spanish and Tagalog. Let us know your preferred language when you request an appointment."),
     ("Do you offer virtual or telehealth appointments?", "Yes, we offer secure and confidential telehealth appointments for individuals seeking convenient access to mental health care from the comfort of home."),
     ("What insurance do you accept?", "We are credentialed with Aetna, Carelon (BCBS), CareSource, Evernorth (Cigna), Medicare, UHC / Optum, UMR, Alignment and Medicaid FFS. Credentialing is pending with Culinary Health Fund, SilverSummit, Molina, Sierra Health and Life HPN and Medicaid MCOs. Because participation and plan benefits can change, please contact our office to confirm your coverage."),
-    ("What does it cost without insurance?", "Self-pay visits are $90 for an initial visit and $50 for a follow-up visit."),
+    ("What does it cost without insurance?", f"Self-pay visits are ${PRACTICE['self_pay']['initial']} for an initial visit and ${PRACTICE['self_pay']['follow_up']} for a follow-up visit."),
     ("When can I be seen?", "We offer flexible times, including early mornings, evenings, Saturdays and Sundays. Call 702-350-1419 or request an appointment and our team will find a time with you."),
     ("What can I expect during my first appointment?", "Your first appointment includes a comprehensive evaluation where we discuss your concerns, symptoms, medical history, and wellness goals to create a personalized care plan."),
     ("Do you prescribe medication if needed?", "Yes, medication management is available when appropriate as part of a personalized treatment plan focused on your mental and emotional well-being."),

@@ -45,6 +45,9 @@
     });
   }
 
+  // English / Español (assets/i18n.js). Form values stay English for the team; the language rides along as a note.
+  function es() { return window.bloomLang === 'es'; }
+
   function track(name, params) { try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch (_) {} }
 
   // Contact form: writes a lead + message into the Bloom CRM (PHI stays in the CRM; the team gets a no-detail heads-up email).
@@ -63,7 +66,7 @@
       var btn = form.querySelector('button[type=submit]'); btn.disabled = true; msg.textContent = 'Sending…';
       fetch('https://usable-horse-871.convex.site/lead', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ first_name: first, last_name: last, email: email, source: 'website_contact', source_detail: subject.slice(0, 200), message: body.slice(0, 4000), attribution: window.bloomAttribution() })
+        body: JSON.stringify({ first_name: first, last_name: last, email: email, source: 'website_contact', source_detail: (es() ? 'Language: Spanish · ' : '') + subject.slice(0, 200), message: body.slice(0, 4000), attribution: window.bloomAttribution() })
       }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok && j.ok !== false, j: j }; }); })
         .then(function (res) {
           if (!res.ok) throw new Error((res.j && res.j.error) || 'send failed');
@@ -92,10 +95,10 @@
       fetch('https://usable-horse-871.convex.site/lead', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ first_name: first, last_name: last, email: email, phone: phone, source: 'website_inquiry',
-          source_detail: 'Requested on the Text Message Program page', visit_type: 'Not sure yet', request_appointment: true,
+          source_detail: 'Requested on the Text Message Program page' + (es() ? ' · Language: Spanish' : ''), visit_type: 'Not sure yet', request_appointment: true,
           tags: ['website', 'psychiatry'], attribution: window.bloomAttribution(),
           sms_consent: sms, sms_consent_text: sms ? document.getElementById('s-sms-text').textContent.replace(/\s+/g, ' ').trim() : undefined,
-          sms_consent_version: sms ? 'bloom-sms-2026-09-25' : undefined, sms_consent_page: sms ? location.href.slice(0, 300) : undefined })
+          sms_consent_version: sms ? 'bloom-sms-2026-09-25' + (es() ? '-es' : '') : undefined, sms_consent_page: sms ? location.href.slice(0, 300) : undefined })
       }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return r.ok && j.ok !== false; }); })
         .then(function (okd) {
           if (!okd) throw new Error('send failed');
@@ -114,6 +117,7 @@
     if (frame.dataset.src && !frame.getAttribute('src')) {
       var src = frame.dataset.src;
       try { src += (src.indexOf('?') < 0 ? '?' : '&') + 'attr=' + encodeURIComponent(JSON.stringify(window.bloomAttribution())); } catch (_) {}
+      if (es()) src += (src.indexOf('?') < 0 ? '?' : '&') + 'lang=es';
       frame.setAttribute('src', src);
     }
     window.addEventListener('message', function (e) {

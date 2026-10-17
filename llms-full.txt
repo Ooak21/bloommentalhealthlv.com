@@ -1,5 +1,5 @@
 # Bloom Mental Health · full site text
-> Generated 2026-09-27 from the live pages by tools/build.py. Source of truth: https://bloommentalhealthlv.com
+> Generated 2026-10-17 from the live pages by tools/build.py. Source of truth: https://bloommentalhealthlv.com
 
 
 ---
@@ -183,7 +183,7 @@ UMR
 Alignment
 Medicaid FFS
 
-Self-pay: $90 initial visit, $50 follow-up. Plan participation and benefits can change, so please call to confirm your coverage.
+Self-pay: $150 initial visit, $75 follow-up. Plan participation and benefits can change, so please call to confirm your coverage.
 
 Your First Step
 
@@ -1664,8 +1664,8 @@ New Patients & Cash Pricing
 
 ## Self-pay visits
 
-$90Initial visit (self-pay)
-$50Follow-up visit (self-pay)
+$150Initial visit (self-pay)
+$75Follow-up visit (self-pay)
 
 We are currently accepting new patients
 Telehealth available
@@ -1800,7 +1800,7 @@ We are credentialed with Aetna, Carelon (BCBS), CareSource, Evernorth (Cigna), M
 
 What does it cost without insurance?
 
-Self-pay visits are $90 for an initial visit and $50 for a follow-up visit.
+Self-pay visits are $150 for an initial visit and $75 for a follow-up visit.
 
 When can I be seen?
 
