@@ -578,7 +578,7 @@ ES = {
     "reply HELP, call 702-350-1419, or email care@bloommentalhealthlv.com.": "responda HELP, llame al 702-350-1419 o escriba a care@bloommentalhealthlv.com.",
     "Carriers are not liable for delayed or undelivered messages.": "Los operadores no son responsables de los mensajes retrasados o no entregados.",
     "We will not share mobile information with third parties for promotional or marketing purposes. See our": "No compartiremos información móvil con terceros con fines promocionales o de marketing. Consulte nuestro",
-    "Bloom Mental Health, 2450 Chandler Ave Ste 1, Las Vegas, NV 89120. Phone 702-350-1419. Email michelle@bloommentalhealthlv.com.": "Bloom Mental Health, 2450 Chandler Ave Ste 1, Las Vegas, NV 89120. Teléfono 702-350-1419. Correo electrónico michelle@bloommentalhealthlv.com.",
+    "Bloom Mental Health, 2450 Chandler Ave Ste 1, Las Vegas, NV 89120. Phone 702-350-1419. Email info@bloommentalhealthlv.com.": "Bloom Mental Health, 2450 Chandler Ave Ste 1, Las Vegas, NV 89120. Teléfono 702-350-1419. Correo electrónico info@bloommentalhealthlv.com.",
     "Terms & SMS Terms | Bloom Mental Health": "Términos y términos de SMS | Bloom Mental Health",  # <title>
 
     # ---- /privacy/
@@ -597,7 +597,7 @@ ES = {
     "We will not share mobile information with third parties for promotional or marketing purposes. Text messaging originator opt-in data and consent will not be shared with any third parties.": "No compartiremos información móvil con terceros con fines promocionales o de marketing. Los datos de inscripción y el consentimiento del originador de mensajes de texto no se compartirán con terceros.",
     "Reply STOP to opt out at any time, or HELP for help. See our": "Responda STOP para cancelar en cualquier momento, o HELP para obtener ayuda. Consulte nuestro",
     "Your choices": "Sus opciones",
-    "You can ask us to update or delete the information you submitted through this website by calling 702-350-1419 or emailing michelle@bloommentalhealthlv.com.": "Puede pedirnos que actualicemos o eliminemos la información que envió a través de este sitio web llamando al 702-350-1419 o escribiendo a michelle@bloommentalhealthlv.com.",
+    "You can ask us to update or delete the information you submitted through this website by calling 702-350-1419 or emailing info@bloommentalhealthlv.com.": "Puede pedirnos que actualicemos o eliminemos la información que envió a través de este sitio web llamando al 702-350-1419 o escribiendo a info@bloommentalhealthlv.com.",
     "Changes": "Cambios",
     "We may update this policy. The date below shows the latest version.": "Podemos actualizar esta política. La fecha de abajo muestra la versión más reciente.",
     "Privacy Policy | Bloom Mental Health": "Política de Privacidad | Bloom Mental Health",  # <title>
@@ -689,7 +689,7 @@ SAME = [
     "UHC / Optum",
     "UMR",
     "Vannessa",
-    "michelle@bloommentalhealthlv.com",
+    "info@bloommentalhealthlv.com",
     "¿Hablan español?",
 ]
 

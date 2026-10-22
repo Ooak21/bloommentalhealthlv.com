@@ -21,7 +21,7 @@ PRACTICE = {
     "phone_e164": "+1-702-350-1419",
     "fax": "702-357-5249",
     "fax_e164": "+1-702-357-5249",
-    "email": "michelle@bloommentalhealthlv.com",
+    "email": "info@bloommentalhealthlv.com",
     # Text-message program support (HELP): care@, the alias Michelle created 9/12 for system mail + replies.
     "sms_email": "care@bloommentalhealthlv.com",
     "languages": ["English", "Spanish", "Tagalog"],
