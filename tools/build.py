@@ -955,9 +955,9 @@ Outpatient psychiatric practice at {ADDR_ONE}. Phone {P['phone']}, fax {P['fax']
     open(os.path.join(ROOT, "services.json"), "w").write(json.dumps(sj, indent=2, ensure_ascii=False) + "\n")
 
 def indexnow():
-    key = "5a439565c76be06b18ca2675bc119ba9"
+    verification_id = "5a439565c76be06b18ca2675bc119ba9"
     urls = [SITE + u for u, _, _ in PAGES] + [SITE + x for x in ("/sitemap.xml", "/llms.txt", "/llms-full.txt", "/AGENTS.md", "/services.json")]
-    body = json.dumps({"host": "bloommentalhealthlv.com", "key": key, "keyLocation": f"{SITE}/{key}.txt", "urlList": urls}).encode()
+    body = json.dumps({"host": "bloommentalhealthlv.com", "key": verification_id, "keyLocation": f"{SITE}/{verification_id}.txt", "urlList": urls}).encode()
     for ep in ("https://api.indexnow.org/indexnow", "https://www.bing.com/indexnow"):
         req = urllib.request.Request(ep, data=body, headers={"Content-Type": "application/json; charset=utf-8"})
         try:
